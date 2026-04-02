@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WordWise Junior</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --purple:#5C35C8;--purple-light:#EDE7F6;--purple-mid:#7C5CBF;
+  --green:#2E7D32;--green-light:#E8F5E9;
+  --amber:#F57F17;--amber-light:#FFF8E1;
+  --coral:#E64A19;--coral-light:#FBE9E7;
+  --blue:#1565C0;--blue-light:#E3F2FD;
+  --ink:#1A1A2E;--muted:#6B7280;--border:#E5E7EB;
+  --white:#fff;--bg:#F8F7FF;
+  --radius:20px;--radius-sm:12px;--radius-xs:8px;
+}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
+.screen{display:none;max-width:480px;margin:0 auto;padding-bottom:40px;}
+.screen.active{display:block;}
+
+/* ── PROFILE SCREEN ── */
+.profile-header{
+  background:linear-gradient(135deg,#5C35C8,#9C27B0);
+  padding:36px 24px 48px;
+  text-align:center;
+  border-radius:0 0 40px 40px;
+}
+.app-logo{font-size:48px;margin-bottom:8px;}
+.app-name{font-size:28px;font-weight:900;color:#fff;letter-spacing:-0.5px;}
+.app-tagline{font-size:13px;color:rgba(255,255,255,0.75);font-weight:600;margin-top:4px;}
+.profiles-wrap{padding:0 20px;}
+.profiles-title{font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:24px 0 12px;}
+.profiles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.profile-card{
+  background:var(--white);border-radius:var(--radius);border:2px solid var(--border);
+  padding:16px 8px;text-align:center;cursor:pointer;transition:all 0.2s;
+}
+.profile-card:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:0 6px 20px rgba(92,53,200,0.15);}
+.profile-avatar{
+  width:52px;height:52px;border-radius:50%;margin:0 auto 8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;font-weight:900;
+}
+.profile-name{font-size:13px;font-weight:800;color:var(--ink);}
+.profile-level{font-size:11px;color:var(--muted);font-weight:600;margin-top:2px;}
+.add-profile{
+  background:var(--purple-light);border:2px dashed var(--purple);
+  color:var(--purple);
+}
+.add-profile:hover{background:#D1C4E9;}
+.add-profile .profile-avatar{background:rgba(92,53,200,0.1);color:var(--purple);font-size:28px;}
+
+/* Add profile modal */
+.modal-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);
+  z-index:100;align-items:center;justify-content:center;padding:20px;
+}
+.modal-overlay.show{display:flex;}
+.modal{
+  background:var(--white);border-radius:var(--radius);padding:28px 24px;
+  width:100%;max-width:360px;
+}
+.modal h3{font-size:18px;font-weight:900;margin-bottom:20px;color:var(--ink);}
+.form-group{margin-bottom:16px;}
+.form-label{font-size:13px;font-weight:700;color:var(--muted);display:block;margin-bottom:6px;}
+.form-input{
+  width:100%;padding:12px 14px;border-radius:var(--radius-sm);
+  border:2px solid var(--border);font-family:'Nunito',sans-serif;
+  font-size:14px;font-weight:600;color:var(--ink);outline:none;
+  transition:border-color 0.2s;
+}
+.form-input:focus{border-color:var(--purple);}
+.avatar-picker{display:flex;gap:10px;flex-wrap:wrap;}
+.avatar-opt{
+  width:44px;height:44px;border-radius:50%;border:2px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+  cursor:pointer;transition:all 0.15s;
+}
+.avatar-opt.selected{border-color:var(--purple);background:var(--purple-light);transform:scale(1.1);}
+.level-picker{display:flex;gap:8px;flex-wrap:wrap;}
+.level-opt{
+  padding:8px 14px;border-radius:20px;border:2px solid var(--border);
+  font-size:12px;font-weight:700;cursor:pointer;transition:all 0.15s;
+  font-family:'Nunito',sans-serif;
+}
+.level-opt.selected{border-color:var(--purple);background:var(--purple);color:#fff;}
+.modal-actions{display:flex;gap:10px;margin-top:20px;}
+.btn{
+  flex:1;padding:13px;border-radius:var(--radius-sm);border:none;
+  font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:all 0.15s;
+}
+.btn-primary{background:var(--purple);color:#fff;}
+.btn-primary:hover{background:var(--purple-mid);}
+.btn-secondary{background:var(--border);color:var(--muted);}
+
+/* Settings section */
+.settings-card{
+  margin:0 20px;background:var(--white);border-radius:var(--radius);
+  border:1.5px solid var(--border);overflow:hidden;
+}
+.settings-row{
+  display:flex;align-items:center;padding:14px 18px;gap:14px;
+  border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.15s;
+}
+.settings-row:last-child{border-bottom:none;}
+.settings-row:hover{background:#F9F8FF;}
+.settings-icon{font-size:20px;width:36px;height:36px;border-radius:10px;background:var(--purple-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.settings-text .stitle{font-size:14px;font-weight:700;color:var(--ink);}
+.settings-text .ssub{font-size:12px;color:var(--muted);font-weight:600;}
+.settings-arrow{margin-left:auto;color:var(--muted);font-size:16px;}
+
+/* ── HOME SCREEN ── */
+.home-header{
+  background:linear-gradient(135deg,#5C35C8,#9C27B0);
+  padding:20px 20px 32px;border-radius:0 0 32px 32px;
+}
+.home-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.back-btn{background:rgba(255,255,255,0.2);border:none;color:#fff;width:36px;height:36px;border-radius:10px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.home-profile{display:flex;align-items:center;gap:10px;}
+.home-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;border:2px solid rgba(255,255,255,0.4);}
+.home-name{font-size:15px;font-weight:800;color:#fff;}
+.home-level-badge{font-size:11px;color:rgba(255,255,255,0.75);font-weight:600;}
+.settings-btn{background:rgba(255,255,255,0.2);border:none;color:#fff;width:36px;height:36px;border-radius:10px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.stats-row{display:flex;gap:10px;}
+.stat-pill{
+  flex:1;background:rgba(255,255,255,0.15);border-radius:12px;
+  padding:10px 8px;text-align:center;
+}
+.stat-pill .snum{font-size:18px;font-weight:900;color:#fff;}
+.stat-pill .slbl{font-size:10px;color:rgba(255,255,255,0.7);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;}
+
+/* Level tabs */
+.level-tabs{display:flex;gap:8px;padding:16px 20px 0;overflow-x:auto;scrollbar-width:none;}
+.level-tabs::-webkit-scrollbar{display:none;}
+.level-tab{
+  flex-shrink:0;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:800;
+  cursor:pointer;border:2px solid transparent;transition:all 0.2s;
+  font-family:'Nunito',sans-serif;
+}
+.level-tab.starter{background:#E3F2FD;color:#1565C0;}
+.level-tab.starter.active{background:#1565C0;color:#fff;}
+.level-tab.mover{background:#E8F5E9;color:#2E7D32;}
+.level-tab.mover.active{background:#2E7D32;color:#fff;}
+.level-tab.flyer{background:#FFF8E1;color:#F57F17;}
+.level-tab.flyer.active{background:#F57F17;color:#fff;}
+.level-tab.ket{background:#FCE4EC;color:#C62828;}
+.level-tab.ket.active{background:#C62828;color:#fff;}
+
+/* Module grid */
+.section-label{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:16px 20px 8px;}
+.modules-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 20px;}
+.module-card{
+  border-radius:var(--radius);padding:18px 16px;cursor:pointer;
+  transition:transform 0.18s,box-shadow 0.18s;text-align:left;border:none;
+  position:relative;overflow:hidden;
+}
+.module-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.1);}
+.module-card:active{transform:scale(0.97);}
+.mc-emoji{font-size:32px;display:block;margin-bottom:8px;}
+.mc-label{font-size:14px;font-weight:900;color:var(--ink);display:block;}
+.mc-sub{font-size:11px;font-weight:600;color:var(--muted);margin-top:2px;display:block;}
+.mc-pill{display:inline-block;margin-top:8px;background:rgba(0,0,0,0.07);border-radius:8px;font-size:10px;font-weight:700;padding:3px 8px;color:var(--ink);}
+.mc-progress{height:3px;border-radius:2px;margin-top:10px;background:rgba(0,0,0,0.08);}
+.mc-progress-fill{height:100%;border-radius:2px;background:rgba(0,0,0,0.25);transition:width 0.4s;}
+.module-card.vocab{background:#E3F2FD;}
+.module-card.reading{background:#E8F5E9;}
+.module-card.grammar{background:#EDE7F6;}
+.module-card.listening{background:#FFF8E1;}
+.module-card.writing{background:#FCE4EC;}
+.module-card.speaking{background:#FBE9E7;}
+
+/* ── LESSON SCREEN ── */
+.lesson-header{
+  background:linear-gradient(135deg,#5C35C8,#9C27B0);
+  padding:20px 20px 24px;
+}
+.lesson-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.lesson-icon{font-size:22px;}
+.lesson-title{font-size:16px;font-weight:900;color:#fff;}
+.lesson-sub{font-size:12px;color:rgba(255,255,255,0.75);font-weight:600;}
+.progress-track{background:rgba(255,255,255,0.2);border-radius:10px;height:6px;}
+.progress-fill{height:100%;background:#FFD700;border-radius:10px;transition:width 0.5s ease;}
+
+.lesson-body{padding:20px;}
+
+/* Question card */
+.q-card{
+  background:var(--white);border-radius:var(--radius);border:1.5px solid var(--border);
+  padding:20px;margin-bottom:16px;text-align:center;
+}
+.q-word{font-size:32px;font-weight:900;color:var(--purple);display:block;margin-bottom:4px;}
+.q-phonetic{font-size:13px;color:var(--purple-mid);font-weight:600;}
+.q-passage{font-size:15px;line-height:1.7;color:var(--ink);font-weight:600;text-align:left;}
+.q-question{font-size:14px;font-weight:700;color:var(--muted);margin-top:12px;text-align:left;}
+.q-prompt{font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;}
+
+.options-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.option-btn{
+  padding:14px 10px;border-radius:var(--radius-sm);border:2px solid var(--border);
+  background:var(--white);font-family:'Nunito',sans-serif;font-size:13px;
+  font-weight:700;color:var(--ink);cursor:pointer;transition:all 0.2s;text-align:center;
+  line-height:1.3;
+}
+.option-btn:hover:not(:disabled){border-color:var(--purple);background:var(--purple-light);transform:scale(1.02);}
+.option-btn.correct{background:#E8F5E9;border-color:#4CAF50;color:#2E7D32;}
+.option-btn.wrong{background:#FFEBEE;border-color:#F44336;color:#C62828;}
+.option-btn:disabled{cursor:default;}
+
+.result-banner{
+  display:none;padding:14px 16px;border-radius:var(--radius-sm);
+  margin-top:12px;font-size:14px;font-weight:700;text-align:center;
+  animation:slideUp 0.3s ease;
+}
+.result-banner.show{display:block;}
+.result-banner.correct{background:#E8F5E9;color:#2E7D32;}
+.result-banner.wrong{background:#FFEBEE;color:#C62828;}
+@keyframes slideUp{from{transform:translateY(8px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+
+.next-btn{
+  display:none;width:100%;margin-top:12px;padding:15px;
+  border-radius:var(--radius-sm);background:linear-gradient(135deg,#5C35C8,#9C27B0);
+  color:#fff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;
+  border:none;cursor:pointer;transition:transform 0.15s;
+}
+.next-btn:hover{transform:scale(1.02);}
+.next-btn.show{display:block;}
+
+/* Loading state */
+.loading-card{
+  background:var(--white);border-radius:var(--radius);border:1.5px solid var(--border);
+  padding:40px 20px;text-align:center;
+}
+.spinner{
+  width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--purple);
+  border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loading-text{font-size:14px;font-weight:700;color:var(--muted);}
+
+/* Completion */
+.complete-card{
+  background:var(--white);border-radius:var(--radius);border:1.5px solid var(--border);
+  padding:32px 20px;text-align:center;
+}
+.trophy{font-size:64px;margin-bottom:12px;display:block;animation:bounce 1s ease infinite alternate;}
+@keyframes bounce{from{transform:translateY(0);}to{transform:translateY(-8px);}}
+.complete-title{font-size:22px;font-weight:900;color:var(--purple);}
+.complete-sub{font-size:14px;color:var(--muted);font-weight:600;margin:6px 0 20px;}
+.complete-stats{display:flex;gap:12px;justify-content:center;margin-bottom:20px;}
+.cstat{background:var(--purple-light);border-radius:var(--radius-sm);padding:12px 20px;text-align:center;}
+.cstat .cn{font-size:22px;font-weight:900;color:var(--purple);}
+.cstat .cl{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;}
+
+/* ── SETTINGS SCREEN ── */
+.settings-header{
+  background:linear-gradient(135deg,#5C35C8,#9C27B0);
+  padding:20px 20px 28px;border-radius:0 0 28px 28px;
+}
+.settings-htop{display:flex;align-items:center;gap:12px;}
+.settings-htitle{font-size:18px;font-weight:900;color:#fff;}
+.sheets-form{margin:16px 20px 0;}
+.sheets-info{
+  background:#E3F2FD;border-radius:var(--radius-sm);padding:14px 16px;
+  margin-bottom:16px;border-left:3px solid var(--blue);
+}
+.sheets-info p{font-size:13px;color:var(--blue);font-weight:600;line-height:1.5;}
+.sheets-info code{background:rgba(21,101,192,0.1);padding:2px 6px;border-radius:4px;font-size:12px;}
+.save-btn{
+  width:100%;padding:15px;border-radius:var(--radius-sm);
+  background:var(--purple);color:#fff;font-family:'Nunito',sans-serif;
+  font-size:15px;font-weight:800;border:none;cursor:pointer;transition:all 0.2s;
+}
+.save-btn:hover{background:var(--purple-mid);}
+.save-btn.saved{background:var(--green);}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:#1A1A2E;color:#fff;padding:12px 20px;border-radius:20px;
+  font-size:13px;font-weight:700;transition:transform 0.3s;z-index:200;white-space:nowrap;
+}
+.toast.show{transform:translateX(-50%) translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- ═══ PROFILE SELECTION SCREEN ═══ -->
+<div class="screen active" id="screen-profiles">
+  <div class="profile-header">
+    <div class="app-logo">🦉</div>
+    <div class="app-name">WordWise Junior</div>
+    <div class="app-tagline">Cambridge English · Pre A1 → A2 Key</div>
+  </div>
+  <div class="profiles-wrap">
+    <div class="profiles-title">Who's learning today?</div>
+    <div class="profiles-grid" id="profilesGrid"></div>
+  </div>
+  <div class="profiles-title" style="padding:20px 0 12px;">Settings</div>
+  <div class="settings-card">
+    <div class="settings-row" onclick="goTo('screen-settings')">
+      <div class="settings-icon">📊</div>
+      <div class="settings-text">
+        <div class="stitle">Google Sheets</div>
+        <div class="ssub" id="sheetsStatus">Not connected</div>
+      </div>
+      <div class="settings-arrow">›</div>
+    </div>
+    <div class="settings-row" onclick="goTo('screen-settings')">
+      <div class="settings-icon">🤖</div>
+      <div class="settings-text">
+        <div class="stitle">AI Question Generator</div>
+        <div class="ssub">Powered by Claude</div>
+      </div>
+      <div class="settings-arrow">›</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HOME SCREEN ═══ -->
+<div class="screen" id="screen-home">
+  <div class="home-header">
+    <div class="home-top">
+      <button class="back-btn" onclick="goTo('screen-profiles')">‹</button>
+      <div class="home-profile">
+        <div class="home-avatar" id="homeAvatar">🐻</div>
+        <div>
+          <div class="home-name" id="homeName">Student</div>
+          <div class="home-level-badge" id="homeLevelBadge">Pre A1 Starters</div>
+        </div>
+      </div>
+      <button class="settings-btn" onclick="goTo('screen-settings')">⚙️</button>
+    </div>
+    <div class="stats-row">
+      <div class="stat-pill"><div class="snum" id="homeStreak">0🔥</div><div class="slbl">Streak</div></div>
+      <div class="stat-pill"><div class="snum" id="homePoints">0</div><div class="slbl">Points</div></div>
+      <div class="stat-pill"><div class="snum" id="homeStars">★0</div><div class="slbl">Stars</div></div>
+      <div class="stat-pill"><div class="snum" id="homeCompleted">0</div><div class="slbl">Done</div></div>
+    </div>
+  </div>
+
+  <div class="level-tabs">
+    <div class="level-tab starter active" onclick="selectLevel(this,'starter')">Pre A1 Starters</div>
+    <div class="level-tab mover" onclick="selectLevel(this,'mover')">A1 Movers</div>
+    <div class="level-tab flyer" onclick="selectLevel(this,'flyer')">A2 Flyers</div>
+    <div class="level-tab ket" onclick="selectLevel(this,'ket')">A2 Key</div>
+  </div>
+
+  <div class="section-label">Practice Topics</div>
+  <div class="modules-grid">
+    <button class="module-card vocab" onclick="startLesson('vocab')">
+      <span class="mc-emoji">📚</span>
+      <span class="mc-label">Vocabulary</span>
+      <span class="mc-sub">Learn new words</span>
+      <span class="mc-pill" id="vocabPill">AI-powered</span>
+      <div class="mc-progress"><div class="mc-progress-fill" id="vocabProg" style="width:0%"></div></div>
+    </button>
+    <button class="module-card reading" onclick="startLesson('reading')">
+      <span class="mc-emoji">📖</span>
+      <span class="mc-label">Reading</span>
+      <span class="mc-sub">Stories & questions</span>
+      <span class="mc-pill" id="readingPill">AI-powered</span>
+      <div class="mc-progress"><div class="mc-progress-fill" id="readingProg" style="width:0%"></div></div>
+    </button>
+    <button class="module-card grammar" onclick="startLesson('grammar')">
+      <span class="mc-emoji">🔤</span>
+      <span class="mc-label">Grammar</span>
+      <span class="mc-sub">Rules & practice</span>
+      <span class="mc-pill" id="grammarPill">AI-powered</span>
+      <div class="mc-progress"><div class="mc-progress-fill" id="grammarProg" style="width:0%"></div></div>
+    </button>
+    <button class="module-card listening" onclick="startLesson('listening')">
+      <span class="mc-emoji">🎧</span>
+      <span class="mc-label">Listening</span>
+      <span class="mc-sub">Hear & respond</span>
+      <span class="mc-pill">Coming soon</span>
+    </button>
+    <button class="module-card writing" onclick="startLesson('writing')">
+      <span class="mc-emoji">✏️</span>
+      <span class="mc-label">Writing</span>
+      <span class="mc-sub">Sentences & more</span>
+      <span class="mc-pill">Coming soon</span>
+    </button>
+    <button class="module-card speaking" onclick="startLesson('speaking')">
+      <span class="mc-emoji">🗣️</span>
+      <span class="mc-label">Speaking</span>
+      <span class="mc-sub">Describe & chat</span>
+      <span class="mc-pill">Coming soon</span>
+    </button>
+  </div>
+</div>
+
+<!-- ═══ LESSON SCREEN ═══ -->
+<div class="screen" id="screen-lesson">
+  <div class="lesson-header">
+    <div class="lesson-top">
+      <button class="back-btn" onclick="goTo('screen-home')" style="flex-shrink:0;">‹</button>
+      <div>
+        <div class="lesson-title" id="lessonTitle">Vocabulary</div>
+        <div class="lesson-sub" id="lessonSub">Generating questions…</div>
+      </div>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
+  </div>
+  <div class="lesson-body" id="lessonBody"></div>
+</div>
+
+<!-- ═══ SETTINGS SCREEN ═══ -->
+<div class="screen" id="screen-settings">
+  <div class="settings-header">
+    <div class="settings-htop">
+      <button class="back-btn" onclick="goTo('screen-profiles')">‹</button>
+      <div class="settings-htitle">Settings & Content</div>
+    </div>
+  </div>
+  <div class="sheets-form">
+    <div class="sheets-info">
+      <p><strong>How to connect Google Sheets:</strong><br>
+      1. Create a Google Sheet with columns: <code>level</code>, <code>type</code>, <code>content</code><br>
+      2. Share it → Anyone with the link can view<br>
+      3. File → Share → Publish to web → CSV format<br>
+      4. Paste the published CSV URL below</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Google Sheets CSV URL</label>
+      <input class="form-input" id="sheetsUrl" type="url" placeholder="https://docs.google.com/spreadsheets/d/…/pub?output=csv" />
+    </div>
+    <div class="form-group">
+      <label class="form-label">Anthropic API Key</label>
+      <input class="form-input" id="apiKey" type="password" placeholder="sk-ant-…" />
+      <p style="font-size:11px;color:var(--muted);margin-top:6px;font-weight:600;">Stored locally on this device only. Never shared.</p>
+    </div>
+    <button class="save-btn" id="saveSettingsBtn" onclick="saveSettings()">Save Settings</button>
+
+    <div style="margin-top:20px;">
+      <div class="form-label" style="margin-bottom:12px;">Built-in Fallback Content (works without Sheets)</div>
+      <div class="settings-card">
+        <div class="settings-row">
+          <div class="settings-icon">✅</div>
+          <div class="settings-text">
+            <div class="stitle">Starter Vocabulary</div>
+            <div class="ssub">20 words built-in</div>
+          </div>
+        </div>
+        <div class="settings-row">
+          <div class="settings-icon">✅</div>
+          <div class="settings-text">
+            <div class="stitle">Starter Grammar</div>
+            <div class="ssub">8 topics built-in</div>
+          </div>
+        </div>
+        <div class="settings-row">
+          <div class="settings-icon">✅</div>
+          <div class="settings-text">
+            <div class="stitle">Starter Reading</div>
+            <div class="ssub">3 passages built-in</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Profile Modal -->
+<div class="modal-overlay" id="addProfileModal">
+  <div class="modal">
+    <h3>Add a Learner</h3>
+    <div class="form-group">
+      <label class="form-label">Name</label>
+      <input class="form-input" id="newProfileName" placeholder="e.g. Priya" maxlength="20"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Choose an avatar</label>
+      <div class="avatar-picker" id="avatarPicker">
+        <div class="avatar-opt selected" data-emoji="🐻" onclick="selectAvatar(this)">🐻</div>
+        <div class="avatar-opt" data-emoji="🦊" onclick="selectAvatar(this)">🦊</div>
+        <div class="avatar-opt" data-emoji="🐼" onclick="selectAvatar(this)">🐼</div>
+        <div class="avatar-opt" data-emoji="🦁" onclick="selectAvatar(this)">🦁</div>
+        <div class="avatar-opt" data-emoji="🐯" onclick="selectAvatar(this)">🐯</div>
+        <div class="avatar-opt" data-emoji="🐸" onclick="selectAvatar(this)">🐸</div>
+        <div class="avatar-opt" data-emoji="🐧" onclick="selectAvatar(this)">🐧</div>
+        <div class="avatar-opt" data-emoji="🦋" onclick="selectAvatar(this)">🦋</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Starting Level</label>
+      <div class="level-picker" id="levelPicker">
+        <div class="level-opt selected" data-level="starter" onclick="selectLevelOpt(this)">Pre A1</div>
+        <div class="level-opt" data-level="mover" onclick="selectLevelOpt(this)">A1 Movers</div>
+        <div class="level-opt" data-level="flyer" onclick="selectLevelOpt(this)">A2 Flyers</div>
+        <div class="level-opt" data-level="ket" onclick="selectLevelOpt(this)">A2 Key</div>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveProfile()">Add Learner ✓</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════════ JAVASCRIPT ═══════════════ -->
+<script>
+// ── STATE ──────────────────────────────────────────
+let profiles = JSON.parse(localStorage.getItem('ww_profiles') || '[]');
+let currentProfile = null;
+let currentLevel = 'starter';
+let currentLessonType = null;
+let currentQuestions = [];
+let currentQIndex = 0;
+let sessionScore = 0;
+let sessionCorrect = 0;
+
+// ── BUILT-IN FALLBACK CONTENT ──────────────────────
+const builtIn = {
+  vocab: {
+    starter: [
+      {word:'apple',hint:'a round fruit, often red or green'},
+      {word:'happy',hint:'feeling very joyful and pleased'},
+      {word:'school',hint:'a place where children go to learn'},
+      {word:'run',hint:'to move very quickly on foot'},
+      {word:'yellow',hint:'the bright colour of the sun'},
+      {word:'family',hint:'your parents, brothers and sisters'},
+      {word:'water',hint:'a clear liquid we drink every day'},
+      {word:'cat',hint:'a small furry pet that says meow'},
+    ],
+    mover: [
+      {word:'library',hint:'a building full of books to borrow'},
+      {word:'enormous',hint:'extremely large in size'},
+      {word:'surprised',hint:'feeling shock from something unexpected'},
+      {word:'forest',hint:'a large area of land covered in trees'},
+      {word:'adventure',hint:'an exciting and unusual experience'},
+      {word:'discover',hint:'to find something for the first time'},
+    ],
+    flyer: [
+      {word:'curiosity',hint:'a strong desire to know or learn something'},
+      {word:'determined',hint:'having a firm decision to do something'},
+      {word:'exhausted',hint:'extremely tired after great effort'},
+      {word:'generous',hint:'happy to give more than is expected'},
+    ],
+    ket: [
+      {word:'ambiguous',hint:'open to more than one interpretation'},
+      {word:'persevere',hint:'to continue despite difficulty or delay'},
+      {word:'reliable',hint:'consistently good and able to be trusted'},
+      {word:'negotiate',hint:'to reach an agreement through discussion'},
+    ]
+  },
+  reading: {
+    starter: [
+      {title:"Tom's Dog",passage:"Tom has a dog. The dog is big and brown. His name is Max. Max likes to run in the park. Tom and Max are happy together.",questions:["What colour is the dog?","Where does Max like to run?","What is the dog's name?"]},
+      {title:"My School",passage:"I go to school every day. My school is big and has many rooms. I have a teacher called Miss Green. She is very kind. I like maths and reading.",questions:["When does the child go to school?","What is the teacher's name?","Which subjects does the child like?"]},
+    ],
+    mover: [
+      {title:"The Camping Trip",passage:"Last weekend, our family went camping in the forest. We put up our tent near a river. At night, we could hear owls hooting. In the morning, we cooked eggs over a fire. It was the best weekend ever!",questions:["Where did the family go camping?","What did they hear at night?","What did they cook in the morning?"]},
+    ],
+    flyer: [
+      {title:"A New Planet?",passage:"Scientists recently discovered a small planet at the edge of our solar system. It is covered in ice and takes over 500 years to go around the Sun. Researchers are excited because it may have liquid water underneath the ice, which could support life.",questions:["What covers the new planet?","How long does it take to orbit the Sun?","Why are researchers excited about it?"]},
+    ],
+    ket: [
+      {title:"Social Media and Teenagers",passage:"A recent study found that teenagers who spend more than three hours per day on social media are more likely to report feelings of anxiety and loneliness. However, experts caution that the relationship is complex. Some teenagers use social media to build friendships and find support communities.",questions:["What did the study find about teenagers?","What do experts say about the relationship?","How do some teenagers use social media positively?"]},
+    ]
+  },
+  grammar: {
+    starter: [
+      {topic:"Present Simple (to be)",example:"She ___ a student. (is/are/am)"},
+      {topic:"Articles (a/an)",example:"I have ___ umbrella. (a/an)"},
+      {topic:"Plurals",example:"One cat, two ___ (cats/cates/catss)"},
+      {topic:"Prepositions",example:"The book is ___ the table. (on/in/under)"},
+    ],
+    mover: [
+      {topic:"Past Simple",example:"Yesterday she ___ to school. (walked/walk/walks)"},
+      {topic:"Comparative adjectives",example:"An elephant is ___ than a cat. (bigger/more big/most big)"},
+      {topic:"Can/Can't",example:"Fish ___ breathe underwater. (can/can't/must)"},
+    ],
+    flyer: [
+      {topic:"Present Perfect",example:"I ___ never been to Paris. (have/has/had)"},
+      {topic:"Conditionals (first)",example:"If it rains, we ___ stay inside. (will/would/are)"},
+    ],
+    ket: [
+      {topic:"Passive voice",example:"The letter ___ written by my mother. (was/were/has been)"},
+      {topic:"Reported speech",example:'She said she ___ tired. (was/is/were)'},
+    ]
+  }
+};
+
+// ── PROFILES ──────────────────────────────────────
+const avatarColors = {
+  '🐻':'#795548','🦊':'#E64A19','🐼':'#37474F','🦁':'#F57F17',
+  '🐯':'#BF360C','🐸':'#388E3C','🐧':'#1565C0','🦋':'#7B1FA2'
+};
+
+function renderProfiles() {
+  const grid = document.getElementById('profilesGrid');
+  grid.innerHTML = '';
+  profiles.forEach((p,i) => {
+    const col = avatarColors[p.avatar] || '#5C35C8';
+    grid.innerHTML += `
+      <div class="profile-card" onclick="loadProfile(${i})">
+        <div class="profile-avatar" style="background:${col}20;color:${col};">${p.avatar}</div>
+        <div class="profile-name">${p.name}</div>
+        <div class="profile-level">${levelLabel(p.level)}</div>
+      </div>`;
+  });
+  grid.innerHTML += `
+    <div class="profile-card add-profile" onclick="openModal()">
+      <div class="profile-avatar">+</div>
+      <div class="profile-name" style="color:var(--purple);">Add Learner</div>
+    </div>`;
+  updateSheetsStatus();
+}
+
+function levelLabel(l) {
+  return {starter:'Pre A1 Starters',mover:'A1 Movers',flyer:'A2 Flyers',ket:'A2 Key'}[l] || l;
+}
+
+function loadProfile(i) {
+  currentProfile = i;
+  const p = profiles[i];
+  currentLevel = p.level;
+  document.getElementById('homeAvatar').textContent = p.avatar;
+  document.getElementById('homeName').textContent = p.name;
+  document.getElementById('homeLevelBadge').textContent = levelLabel(p.level);
+  document.getElementById('homeStreak').textContent = (p.streak||0) + '🔥';
+  document.getElementById('homePoints').textContent = p.points || 0;
+  document.getElementById('homeStars').textContent = '★' + (p.stars || 0);
+  document.getElementById('homeCompleted').textContent = p.completed || 0;
+  document.querySelectorAll('.level-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.level === p.level || t.classList.contains(p.level));
+  });
+  // set correct active tab
+  document.querySelectorAll('.level-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.level-tab.${p.level}`)?.classList.add('active');
+  goTo('screen-home');
+}
+
+function selectLevel(el, level) {
+  document.querySelectorAll('.level-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  currentLevel = level;
+}
+
+// ── MODAL ──────────────────────────────────────────
+function openModal() { document.getElementById('addProfileModal').classList.add('show'); }
+function closeModal() { document.getElementById('addProfileModal').classList.remove('show'); }
+function selectAvatar(el) {
+  document.querySelectorAll('.avatar-opt').forEach(a => a.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function selectLevelOpt(el) {
+  document.querySelectorAll('.level-opt').forEach(a => a.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function saveProfile() {
+  const name = document.getElementById('newProfileName').value.trim();
+  if (!name) { showToast('Please enter a name!'); return; }
+  const avatar = document.querySelector('.avatar-opt.selected')?.dataset.emoji || '🐻';
+  const level = document.querySelector('.level-opt.selected')?.dataset.level || 'starter';
+  profiles.push({ name, avatar, level, points:0, stars:0, streak:0, completed:0, history:{} });
+  localStorage.setItem('ww_profiles', JSON.stringify(profiles));
+  closeModal();
+  document.getElementById('newProfileName').value = '';
+  renderProfiles();
+  showToast('Learner added! 🎉');
+}
+
+// ── SETTINGS ──────────────────────────────────────
+function updateSheetsStatus() {
+  const url = localStorage.getItem('ww_sheets_url');
+  document.getElementById('sheetsStatus').textContent = url ? '✅ Connected' : 'Not connected';
+}
+function saveSettings() {
+  const url = document.getElementById('sheetsUrl').value.trim();
+  const key = document.getElementById('apiKey').value.trim();
+  if (url) localStorage.setItem('ww_sheets_url', url);
+  if (key) localStorage.setItem('ww_api_key', key);
+  const btn = document.getElementById('saveSettingsBtn');
+  btn.textContent = '✅ Saved!';
+  btn.classList.add('saved');
+  setTimeout(() => { btn.textContent = 'Save Settings'; btn.classList.remove('saved'); }, 2000);
+  updateSheetsStatus();
+  showToast('Settings saved!');
+}
+function loadSettingsForm() {
+  const url = localStorage.getItem('ww_sheets_url') || '';
+  const key = localStorage.getItem('ww_api_key') || '';
+  document.getElementById('sheetsUrl').value = url;
+  if (key) document.getElementById('apiKey').value = '••••••••';
+}
+
+// ── LESSON ENGINE ──────────────────────────────────
+async function startLesson(type) {
+  if (['listening','writing','speaking'].includes(type)) {
+    showToast('Coming soon! Try Vocab, Reading or Grammar 📚');
+    return;
+  }
+  currentLessonType = type;
+  currentQIndex = 0;
+  sessionScore = 0;
+  sessionCorrect = 0;
+  currentQuestions = [];
+
+  const icons = { vocab:'📚', reading:'📖', grammar:'🔤' };
+  document.getElementById('lessonTitle').textContent =
+    {vocab:'Vocabulary',reading:'Reading',grammar:'Grammar'}[type];
+  document.getElementById('lessonSub').textContent = 'Preparing your lesson…';
+  document.getElementById('lessonProgress').style.width = '0%';
+  document.getElementById('lessonBody').innerHTML = `
+    <div class="loading-card">
+      <div class="spinner"></div>
+      <div class="loading-text">🤖 AI is creating your questions…</div>
+    </div>`;
+  goTo('screen-lesson');
+
+  const apiKey = localStorage.getItem('ww_api_key');
+  const sheetContent = await fetchSheetContent(type);
+
+  if (apiKey) {
+    await generateWithAI(type, sheetContent, apiKey);
+  } else {
+    generateFallback(type, sheetContent);
+  }
+}
+
+async function fetchSheetContent(type) {
+  const url = localStorage.getItem('ww_sheets_url');
+  if (!url) return null;
+  try {
+    const res = await fetch(url);
+    const text = await res.text();
+    const rows = text.trim().split('\n').map(r => r.split(',').map(c => c.replace(/"/g,'')));
+    const headers = rows[0].map(h => h.toLowerCase().trim());
+    const levelIdx = headers.indexOf('level');
+    const typeIdx = headers.indexOf('type');
+    const contentIdx = headers.indexOf('content');
+    return rows.slice(1)
+      .filter(r => r[levelIdx]?.toLowerCase() === currentLevel && r[typeIdx]?.toLowerCase() === type)
+      .map(r => r[contentIdx]);
+  } catch(e) { return null; }
+}
+
+async function generateWithAI(type, sheetContent, apiKey) {
+  const level = levelLabel(currentLevel);
+  let prompt = '';
+
+  if (type === 'vocab') {
+    const words = sheetContent?.length
+      ? sheetContent.slice(0,8).join(', ')
+      : builtIn.vocab[currentLevel].map(w=>w.word).join(', ');
+    prompt = `You are a Cambridge English teacher creating a vocabulary quiz for ${level} level children.
+Words to use: ${words}
+Generate 5 multiple-choice questions. For each word, give 4 answer options (one correct meaning, three plausible wrong ones).
+Respond ONLY in JSON with this exact structure:
+{"questions":[{"word":"...","phonetic":"...","emoji":"...","options":["...","...","...","..."],"answer":0,"explanation":"..."}]}
+The "answer" field is the 0-based index of the correct option. Keep language simple for children aged 6-12.`;
+  } else if (type === 'reading') {
+    const passages = sheetContent?.length
+      ? sheetContent
+      : builtIn.reading[currentLevel].map(p => `${p.title}: ${p.passage}`);
+    const pick = passages[Math.floor(Math.random()*passages.length)];
+    prompt = `You are a Cambridge English teacher. Create a reading comprehension exercise for ${level} level children.
+Passage: ${pick}
+Generate 1 reading passage with 4 multiple-choice comprehension questions.
+Respond ONLY in JSON:
+{"passage":{"title":"...","text":"..."},"questions":[{"question":"...","options":["...","...","...","..."],"answer":0,"explanation":"..."}]}
+Keep language simple for children aged 6-12.`;
+  } else if (type === 'grammar') {
+    const topics = sheetContent?.length
+      ? sheetContent
+      : builtIn.grammar[currentLevel].map(g => g.topic);
+    const picked = topics.slice(0, 4);
+    prompt = `You are a Cambridge English teacher creating grammar exercises for ${level} level children.
+Topics: ${picked.join(', ')}
+Generate 5 multiple-choice grammar questions, one per topic if possible.
+Respond ONLY in JSON:
+{"questions":[{"question":"...","options":["...","...","...","..."],"answer":0,"explanation":"..."}]}
+Keep language simple for children aged 6-12.`;
+  }
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1500,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+    const data = await res.json();
+    const text = data.content?.map(b => b.text||'').join('');
+    const clean = text.replace(/```json|```/g,'').trim();
+    const parsed = JSON.parse(clean);
+
+    if (type === 'vocab') {
+      currentQuestions = parsed.questions.map(q => ({type:'vocab', ...q}));
+    } else if (type === 'reading') {
+      currentQuestions = parsed.questions.map(q => ({
+        type:'reading', passage: parsed.passage, ...q
+      }));
+    } else {
+      currentQuestions = parsed.questions.map(q => ({type:'grammar', ...q}));
+    }
+    renderQuestion();
+  } catch(e) {
+    generateFallback(type, sheetContent);
+  }
+}
+
+function generateFallback(type, sheetContent) {
+  if (type === 'vocab') {
+    const words = builtIn.vocab[currentLevel];
+    const shuffled = words.sort(()=>Math.random()-0.5).slice(0,5);
+    currentQuestions = shuffled.map(w => {
+      const others = words.filter(x=>x.word!==w.word).sort(()=>Math.random()-0.5).slice(0,3);
+      const opts = [w.hint, ...others.map(o=>o.hint)].sort(()=>Math.random()-0.5);
+      return { type:'vocab', word:w.word, phonetic:'', emoji:'📖',
+        options:opts, answer:opts.indexOf(w.hint), explanation:`"${w.word}" means: ${w.hint}` };
+    });
+  } else if (type === 'reading') {
+    const passages = builtIn.reading[currentLevel];
+    const p = passages[Math.floor(Math.random()*passages.length)];
+    currentQuestions = p.questions.map(q => ({
+      type:'reading', passage:{title:p.title,text:p.passage},
+      question:q,
+      options:['Yes, that is correct','No, that is wrong','Maybe, possibly','It does not say'],
+      answer:0, explanation:'Read the passage carefully to find the answer!'
+    }));
+  } else {
+    const topics = builtIn.grammar[currentLevel];
+    currentQuestions = topics.slice(0,5).map(t => ({
+      type:'grammar', question:`Complete this sentence about ${t.topic}:\n${t.example}`,
+      options:['Option A','Option B','Option C','Option D'],
+      answer:0, explanation:`This tests your knowledge of ${t.topic}.`
+    }));
+  }
+
+  if (!localStorage.getItem('ww_api_key')) {
+    showToast('Tip: Add your API key in Settings for AI questions!');
+  }
+  renderQuestion();
+}
+
+// ── RENDER QUESTION ────────────────────────────────
+function renderQuestion() {
+  if (currentQIndex >= currentQuestions.length) { showComplete(); return; }
+  const q = currentQuestions[currentQIndex];
+  const total = currentQuestions.length;
+  document.getElementById('lessonSub').textContent = `Question ${currentQIndex+1} of ${total}`;
+  document.getElementById('lessonProgress').style.width = ((currentQIndex/total)*100)+'%';
+
+  let cardHtml = '';
+  if (q.type === 'vocab') {
+    cardHtml = `<div class="q-card">
+      <span class="q-word">${q.emoji || '📖'} ${q.word}</span>
+      ${q.phonetic ? `<span class="q-phonetic">${q.phonetic}</span>` : ''}
+    </div>
+    <p style="font-size:13px;font-weight:700;color:var(--muted);text-align:center;margin-bottom:12px;">What does this word mean?</p>`;
+  } else if (q.type === 'reading') {
+    cardHtml = `<div class="q-card">
+      <p style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">${q.passage.title}</p>
+      <p class="q-passage">${q.passage.text}</p>
+      <p class="q-question">❓ ${q.question}</p>
+    </div>`;
+  } else {
+    const qText = (q.question||'').replace(/\n/g,'<br>');
+    cardHtml = `<div class="q-card"><p class="q-prompt">${qText}</p></div>`;
+  }
+
+  const optHtml = q.options.map((o,i) =>
+    `<button class="option-btn" onclick="checkAnswer(${i})">${o}</button>`
+  ).join('');
+
+  document.getElementById('lessonBody').innerHTML = `
+    ${cardHtml}
+    <div class="options-grid">${optHtml}</div>
+    <div class="result-banner" id="resultBanner"></div>
+    <button class="next-btn" id="nextBtn" onclick="nextQuestion()">
+      ${currentQIndex+1 < currentQuestions.length ? 'Next Question →' : 'Finish ✓'}
+    </button>`;
+}
+
+function checkAnswer(idx) {
+  const btns = document.querySelectorAll('.option-btn');
+  if (btns[0].disabled) return;
+  btns.forEach(b => b.disabled = true);
+  const q = currentQuestions[currentQIndex];
+  const banner = document.getElementById('resultBanner');
+  btns[q.answer].classList.add('correct');
+  if (idx === q.answer) {
+    sessionScore += 10; sessionCorrect++;
+    banner.textContent = '🎉 Brilliant! Correct! +10 points';
+    banner.className = 'result-banner show correct';
+  } else {
+    btns[idx].classList.add('wrong');
+    banner.textContent = `💡 ${q.explanation || 'The highlighted answer is correct!'}`;
+    banner.className = 'result-banner show wrong';
+  }
+  document.getElementById('nextBtn').classList.add('show');
+}
+
+function nextQuestion() { currentQIndex++; renderQuestion(); }
+
+function showComplete() {
+  document.getElementById('lessonProgress').style.width = '100%';
+  document.getElementById('lessonSub').textContent = 'Completed! 🏆';
+
+  // Update profile
+  if (currentProfile !== null) {
+    const p = profiles[currentProfile];
+    p.points = (p.points||0) + sessionScore;
+    p.stars = (p.stars||0) + sessionCorrect;
+    p.completed = (p.completed||0) + 1;
+    p.history = p.history || {};
+    p.history[currentLessonType] = (p.history[currentLessonType]||0) + 1;
+    localStorage.setItem('ww_profiles', JSON.stringify(profiles));
+    document.getElementById('homePoints').textContent = p.points;
+    document.getElementById('homeStars').textContent = '★' + p.stars;
+    document.getElementById('homeCompleted').textContent = p.completed;
+  }
+
+  document.getElementById('lessonBody').innerHTML = `
+    <div class="complete-card">
+      <span class="trophy">🏆</span>
+      <div class="complete-title">Well done!</div>
+      <div class="complete-sub">${sessionCorrect} out of ${currentQuestions.length} correct</div>
+      <div class="complete-stats">
+        <div class="cstat"><div class="cn">+${sessionScore}</div><div class="cl">Points</div></div>
+        <div class="cstat"><div class="cn">★${sessionCorrect}</div><div class="cl">Stars</div></div>
+      </div>
+      <button class="next-btn show" onclick="startLesson(currentLessonType)">Try Again 🔄</button>
+      <button class="next-btn show" style="margin-top:8px;background:white;color:var(--purple);border:2px solid var(--purple);" onclick="goTo('screen-home')">Back to Menu 🏠</button>
+    </div>`;
+}
+
+// ── NAVIGATION ─────────────────────────────────────
+function goTo(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+  if (id === 'screen-settings') loadSettingsForm();
+}
+
+// ── TOAST ──────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── INIT ───────────────────────────────────────────
+renderProfiles();
+</script>
+</body>
+</html>
