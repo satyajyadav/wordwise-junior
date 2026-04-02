@@ -21,90 +21,44 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);min-h
 .screen{display:none;max-width:480px;margin:0 auto;padding-bottom:40px;}
 .screen.active{display:block;}
 
-/* ── PROFILE SCREEN ── */
-.profile-header{
-  background:linear-gradient(135deg,#5C35C8,#9C27B0);
-  padding:36px 24px 48px;
-  text-align:center;
-  border-radius:0 0 40px 40px;
-}
+.profile-header{background:linear-gradient(135deg,#5C35C8,#9C27B0);padding:36px 24px 48px;text-align:center;border-radius:0 0 40px 40px;}
 .app-logo{font-size:48px;margin-bottom:8px;}
 .app-name{font-size:28px;font-weight:900;color:#fff;letter-spacing:-0.5px;}
 .app-tagline{font-size:13px;color:rgba(255,255,255,0.75);font-weight:600;margin-top:4px;}
 .profiles-wrap{padding:0 20px;}
 .profiles-title{font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:24px 0 12px;}
 .profiles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-.profile-card{
-  background:var(--white);border-radius:var(--radius);border:2px solid var(--border);
-  padding:16px 8px;text-align:center;cursor:pointer;transition:all 0.2s;
-}
+.profile-card{background:var(--white);border-radius:var(--radius);border:2px solid var(--border);padding:16px 8px;text-align:center;cursor:pointer;transition:all 0.2s;}
 .profile-card:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:0 6px 20px rgba(92,53,200,0.15);}
-.profile-avatar{
-  width:52px;height:52px;border-radius:50%;margin:0 auto 8px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:22px;font-weight:900;
-}
+.profile-avatar{width:52px;height:52px;border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;}
 .profile-name{font-size:13px;font-weight:800;color:var(--ink);}
 .profile-level{font-size:11px;color:var(--muted);font-weight:600;margin-top:2px;}
-.add-profile{
-  background:var(--purple-light);border:2px dashed var(--purple);
-  color:var(--purple);
-}
+.add-profile{background:var(--purple-light);border:2px dashed var(--purple);color:var(--purple);}
 .add-profile:hover{background:#D1C4E9;}
 .add-profile .profile-avatar{background:rgba(92,53,200,0.1);color:var(--purple);font-size:28px;}
 
-/* Add profile modal */
-.modal-overlay{
-  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);
-  z-index:100;align-items:center;justify-content:center;padding:20px;
-}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:100;align-items:center;justify-content:center;padding:20px;}
 .modal-overlay.show{display:flex;}
-.modal{
-  background:var(--white);border-radius:var(--radius);padding:28px 24px;
-  width:100%;max-width:360px;
-}
+.modal{background:var(--white);border-radius:var(--radius);padding:28px 24px;width:100%;max-width:360px;}
 .modal h3{font-size:18px;font-weight:900;margin-bottom:20px;color:var(--ink);}
 .form-group{margin-bottom:16px;}
 .form-label{font-size:13px;font-weight:700;color:var(--muted);display:block;margin-bottom:6px;}
-.form-input{
-  width:100%;padding:12px 14px;border-radius:var(--radius-sm);
-  border:2px solid var(--border);font-family:'Nunito',sans-serif;
-  font-size:14px;font-weight:600;color:var(--ink);outline:none;
-  transition:border-color 0.2s;
-}
+.form-input{width:100%;padding:12px 14px;border-radius:var(--radius-sm);border:2px solid var(--border);font-family:'Nunito',sans-serif;font-size:14px;font-weight:600;color:var(--ink);outline:none;transition:border-color 0.2s;}
 .form-input:focus{border-color:var(--purple);}
 .avatar-picker{display:flex;gap:10px;flex-wrap:wrap;}
-.avatar-opt{
-  width:44px;height:44px;border-radius:50%;border:2px solid var(--border);
-  display:flex;align-items:center;justify-content:center;font-size:20px;
-  cursor:pointer;transition:all 0.15s;
-}
+.avatar-opt{width:44px;height:44px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;transition:all 0.15s;}
 .avatar-opt.selected{border-color:var(--purple);background:var(--purple-light);transform:scale(1.1);}
 .level-picker{display:flex;gap:8px;flex-wrap:wrap;}
-.level-opt{
-  padding:8px 14px;border-radius:20px;border:2px solid var(--border);
-  font-size:12px;font-weight:700;cursor:pointer;transition:all 0.15s;
-  font-family:'Nunito',sans-serif;
-}
+.level-opt{padding:8px 14px;border-radius:20px;border:2px solid var(--border);font-size:12px;font-weight:700;cursor:pointer;transition:all 0.15s;font-family:'Nunito',sans-serif;}
 .level-opt.selected{border-color:var(--purple);background:var(--purple);color:#fff;}
 .modal-actions{display:flex;gap:10px;margin-top:20px;}
-.btn{
-  flex:1;padding:13px;border-radius:var(--radius-sm);border:none;
-  font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:all 0.15s;
-}
+.btn{flex:1;padding:13px;border-radius:var(--radius-sm);border:none;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:all 0.15s;}
 .btn-primary{background:var(--purple);color:#fff;}
 .btn-primary:hover{background:var(--purple-mid);}
 .btn-secondary{background:var(--border);color:var(--muted);}
 
-/* Settings section */
-.settings-card{
-  margin:0 20px;background:var(--white);border-radius:var(--radius);
-  border:1.5px solid var(--border);overflow:hidden;
-}
-.settings-row{
-  display:flex;align-items:center;padding:14px 18px;gap:14px;
-  border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.15s;
-}
+.settings-card{margin:0 20px;background:var(--white);border-radius:var(--radius);border:1.5px solid var(--border);overflow:hidden;}
+.settings-row{display:flex;align-items:center;padding:14px 18px;gap:14px;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.15s;}
 .settings-row:last-child{border-bottom:none;}
 .settings-row:hover{background:#F9F8FF;}
 .settings-icon{font-size:20px;width:36px;height:36px;border-radius:10px;background:var(--purple-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
@@ -112,11 +66,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);min-h
 .settings-text .ssub{font-size:12px;color:var(--muted);font-weight:600;}
 .settings-arrow{margin-left:auto;color:var(--muted);font-size:16px;}
 
-/* ── HOME SCREEN ── */
-.home-header{
-  background:linear-gradient(135deg,#5C35C8,#9C27B0);
-  padding:20px 20px 32px;border-radius:0 0 32px 32px;
-}
+.home-header{background:linear-gradient(135deg,#5C35C8,#9C27B0);padding:20px 20px 32px;border-radius:0 0 32px 32px;}
 .home-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
 .back-btn{background:rgba(255,255,255,0.2);border:none;color:#fff;width:36px;height:36px;border-radius:10px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 .home-profile{display:flex;align-items:center;gap:10px;}
@@ -125,38 +75,23 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);min-h
 .home-level-badge{font-size:11px;color:rgba(255,255,255,0.75);font-weight:600;}
 .settings-btn{background:rgba(255,255,255,0.2);border:none;color:#fff;width:36px;height:36px;border-radius:10px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 .stats-row{display:flex;gap:10px;}
-.stat-pill{
-  flex:1;background:rgba(255,255,255,0.15);border-radius:12px;
-  padding:10px 8px;text-align:center;
-}
+.stat-pill{flex:1;background:rgba(255,255,255,0.15);border-radius:12px;padding:10px 8px;text-align:center;}
 .stat-pill .snum{font-size:18px;font-weight:900;color:#fff;}
 .stat-pill .slbl{font-size:10px;color:rgba(255,255,255,0.7);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;}
 
-/* Level tabs */
 .level-tabs{display:flex;gap:8px;padding:16px 20px 0;overflow-x:auto;scrollbar-width:none;}
 .level-tabs::-webkit-scrollbar{display:none;}
-.level-tab{
-  flex-shrink:0;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:800;
-  cursor:pointer;border:2px solid transparent;transition:all 0.2s;
-  font-family:'Nunito',sans-serif;
-}
-.level-tab.starter{background:#E3F2FD;color:#1565C0;}
-.level-tab.starter.active{background:#1565C0;color:#fff;}
-.level-tab.mover{background:#E8F5E9;color:#2E7D32;}
-.level-tab.mover.active{background:#2E7D32;color:#fff;}
-.level-tab.flyer{background:#FFF8E1;color:#F57F17;}
-.level-tab.flyer.active{background:#F57F17;color:#fff;}
-.level-tab.ket{background:#FCE4EC;color:#C62828;}
-.level-tab.ket.active{background:#C62828;color:#fff;}
+.level-tab{flex-shrink:0;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:800;cursor:pointer;border:2px solid transparent;transition:all 0.2s;font-family:'Nunito',sans-serif;}
+.level-tab.class4{background:#E3F2FD;color:#1565C0;}
+.level-tab.class4.active{background:#1565C0;color:#fff;}
+.level-tab.class5{background:#E8F5E9;color:#2E7D32;}
+.level-tab.class5.active{background:#2E7D32;color:#fff;}
+.level-tab.class6{background:#FFF8E1;color:#F57F17;}
+.level-tab.class6.active{background:#F57F17;color:#fff;}
 
-/* Module grid */
 .section-label{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:16px 20px 8px;}
 .modules-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 20px;}
-.module-card{
-  border-radius:var(--radius);padding:18px 16px;cursor:pointer;
-  transition:transform 0.18s,box-shadow 0.18s;text-align:left;border:none;
-  position:relative;overflow:hidden;
-}
+.module-card{border-radius:var(--radius);padding:18px 16px;cursor:pointer;transition:transform 0.18s,box-shadow 0.18s;text-align:left;border:none;position:relative;overflow:hidden;}
 .module-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.1);}
 .module-card:active{transform:scale(0.97);}
 .mc-emoji{font-size:32px;display:block;margin-bottom:8px;}
@@ -168,83 +103,54 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);min-h
 .module-card.vocab{background:#E3F2FD;}
 .module-card.reading{background:#E8F5E9;}
 .module-card.grammar{background:#EDE7F6;}
-.module-card.listening{background:#FFF8E1;}
 .module-card.writing{background:#FCE4EC;}
-.module-card.speaking{background:#FBE9E7;}
+.module-card.spelling{background:#FFF8E1;}
+.module-card.jumble{background:#FBE9E7;}
 
-/* ── LESSON SCREEN ── */
-.lesson-header{
-  background:linear-gradient(135deg,#5C35C8,#9C27B0);
-  padding:20px 20px 24px;
-}
+.lesson-header{background:linear-gradient(135deg,#5C35C8,#9C27B0);padding:20px 20px 24px;}
 .lesson-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
-.lesson-icon{font-size:22px;}
 .lesson-title{font-size:16px;font-weight:900;color:#fff;}
 .lesson-sub{font-size:12px;color:rgba(255,255,255,0.75);font-weight:600;}
 .progress-track{background:rgba(255,255,255,0.2);border-radius:10px;height:6px;}
 .progress-fill{height:100%;background:#FFD700;border-radius:10px;transition:width 0.5s ease;}
-
 .lesson-body{padding:20px;}
 
-/* Question card */
-.q-card{
-  background:var(--white);border-radius:var(--radius);border:1.5px solid var(--border);
-  padding:20px;margin-bottom:16px;text-align:center;
-}
-.q-word{font-size:32px;font-weight:900;color:var(--purple);display:block;margin-bottom:4px;}
-.q-phonetic{font-size:13px;color:var(--purple-mid);font-weight:600;}
-.q-passage{font-size:15px;line-height:1.7;color:var(--ink);font-weight:600;text-align:left;}
-.q-question{font-size:14px;font-weight:700;color:var(--muted);margin-top:12px;text-align:left;}
-.q-prompt{font-size:15px;font-weight:700;color:var(--ink);line-height:1.5;}
+.q-card{background:var(--white);border-radius:var(--radius);border:1.5px solid var(--border);padding:20px;margin-bottom:16px;}
+.q-word{font-size:30px;font-weight:900;color:var(--purple);display:block;margin-bottom:4px;text-align:center;}
+.q-phonetic{font-size:13px;color:var(--purple-mid);font-weight:600;display:block;text-align:center;margin-bottom:8px;}
+.q-context{font-size:13px;color:var(--muted);font-weight:600;text-align:center;font-style:italic;margin-top:6px;}
+.q-passage-title{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);margin-bottom:8px;}
+.q-passage{font-size:14px;line-height:1.8;color:var(--ink);font-weight:600;}
+.q-question{font-size:14px;font-weight:700;color:var(--purple);margin-top:14px;padding-top:12px;border-top:1px solid var(--border);}
+.q-prompt{font-size:15px;font-weight:700;color:var(--ink);line-height:1.6;}
+.q-sentence{font-size:16px;font-weight:700;color:var(--ink);text-align:center;line-height:1.6;padding:8px 0;}
+.blank{display:inline-block;min-width:80px;border-bottom:3px solid var(--purple);margin:0 4px;}
 
 .options-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.option-btn{
-  padding:14px 10px;border-radius:var(--radius-sm);border:2px solid var(--border);
-  background:var(--white);font-family:'Nunito',sans-serif;font-size:13px;
-  font-weight:700;color:var(--ink);cursor:pointer;transition:all 0.2s;text-align:center;
-  line-height:1.3;
-}
+.options-grid.one-col{grid-template-columns:1fr;}
+.option-btn{padding:14px 12px;border-radius:var(--radius-sm);border:2px solid var(--border);background:var(--white);font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;transition:all 0.2s;text-align:center;line-height:1.4;}
 .option-btn:hover:not(:disabled){border-color:var(--purple);background:var(--purple-light);transform:scale(1.02);}
 .option-btn.correct{background:#E8F5E9;border-color:#4CAF50;color:#2E7D32;}
 .option-btn.wrong{background:#FFEBEE;border-color:#F44336;color:#C62828;}
 .option-btn:disabled{cursor:default;}
 
-.result-banner{
-  display:none;padding:14px 16px;border-radius:var(--radius-sm);
-  margin-top:12px;font-size:14px;font-weight:700;text-align:center;
-  animation:slideUp 0.3s ease;
-}
+.result-banner{display:none;padding:14px 16px;border-radius:var(--radius-sm);margin-top:12px;font-size:13px;font-weight:700;text-align:center;animation:slideUp 0.3s ease;line-height:1.5;}
 .result-banner.show{display:block;}
 .result-banner.correct{background:#E8F5E9;color:#2E7D32;}
 .result-banner.wrong{background:#FFEBEE;color:#C62828;}
 @keyframes slideUp{from{transform:translateY(8px);opacity:0;}to{transform:translateY(0);opacity:1;}}
 
-.next-btn{
-  display:none;width:100%;margin-top:12px;padding:15px;
-  border-radius:var(--radius-sm);background:linear-gradient(135deg,#5C35C8,#9C27B0);
-  color:#fff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;
-  border:none;cursor:pointer;transition:transform 0.15s;
-}
+.next-btn{display:none;width:100%;margin-top:12px;padding:15px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#5C35C8,#9C27B0);color:#fff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;border:none;cursor:pointer;transition:transform 0.15s;}
 .next-btn:hover{transform:scale(1.02);}
 .next-btn.show{display:block;}
+.next-btn.outline{background:white;color:var(--purple);border:2px solid var(--purple);}
 
-/* Loading state */
-.loading-card{
-  background:var(--white);border-radius:var(--radius);border:1.5px solid var(--border);
-  padding:40px 20px;text-align:center;
-}
-.spinner{
-  width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--purple);
-  border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px;
-}
+.loading-card{background:var(--white);border-radius:var(--radius);border:1.5px solid var(--border);padding:40px 20px;text-align:center;}
+.spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--purple);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 16px;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .loading-text{font-size:14px;font-weight:700;color:var(--muted);}
 
-/* Completion */
-.complete-card{
-  background:var(--white);border-radius:var(--radius);border:1.5px solid var(--border);
-  padding:32px 20px;text-align:center;
-}
+.complete-card{background:var(--white);border-radius:var(--radius);border:1.5px solid var(--border);padding:32px 20px;text-align:center;}
 .trophy{font-size:64px;margin-bottom:12px;display:block;animation:bounce 1s ease infinite alternate;}
 @keyframes bounce{from{transform:translateY(0);}to{transform:translateY(-8px);}}
 .complete-title{font-size:22px;font-weight:900;color:var(--purple);}
@@ -254,45 +160,36 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);min-h
 .cstat .cn{font-size:22px;font-weight:900;color:var(--purple);}
 .cstat .cl{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;}
 
-/* ── SETTINGS SCREEN ── */
-.settings-header{
-  background:linear-gradient(135deg,#5C35C8,#9C27B0);
-  padding:20px 20px 28px;border-radius:0 0 28px 28px;
-}
+.settings-header{background:linear-gradient(135deg,#5C35C8,#9C27B0);padding:20px 20px 28px;border-radius:0 0 28px 28px;}
 .settings-htop{display:flex;align-items:center;gap:12px;}
 .settings-htitle{font-size:18px;font-weight:900;color:#fff;}
 .sheets-form{margin:16px 20px 0;}
-.sheets-info{
-  background:#E3F2FD;border-radius:var(--radius-sm);padding:14px 16px;
-  margin-bottom:16px;border-left:3px solid var(--blue);
-}
-.sheets-info p{font-size:13px;color:var(--blue);font-weight:600;line-height:1.5;}
+.sheets-info{background:#E3F2FD;border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:16px;border-left:3px solid var(--blue);}
+.sheets-info p{font-size:13px;color:var(--blue);font-weight:600;line-height:1.6;}
 .sheets-info code{background:rgba(21,101,192,0.1);padding:2px 6px;border-radius:4px;font-size:12px;}
-.save-btn{
-  width:100%;padding:15px;border-radius:var(--radius-sm);
-  background:var(--purple);color:#fff;font-family:'Nunito',sans-serif;
-  font-size:15px;font-weight:800;border:none;cursor:pointer;transition:all 0.2s;
-}
+.save-btn{width:100%;padding:15px;border-radius:var(--radius-sm);background:var(--purple);color:#fff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;border:none;cursor:pointer;transition:all 0.2s;}
 .save-btn:hover{background:var(--purple-mid);}
 .save-btn.saved{background:var(--green);}
 
-/* Toast */
-.toast{
-  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);
-  background:#1A1A2E;color:#fff;padding:12px 20px;border-radius:20px;
-  font-size:13px;font-weight:700;transition:transform 0.3s;z-index:200;white-space:nowrap;
-}
+.qbank-section{margin:0 20px;}
+.qbank-card{background:var(--white);border-radius:var(--radius);border:1.5px solid var(--border);padding:16px 18px;margin-bottom:10px;}
+.qbank-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
+.qbank-title{font-size:14px;font-weight:800;color:var(--ink);}
+.qbank-count{font-size:12px;font-weight:700;color:var(--purple);background:var(--purple-light);padding:3px 10px;border-radius:10px;}
+.qbank-sub{font-size:12px;color:var(--muted);font-weight:600;}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:#1A1A2E;color:#fff;padding:12px 20px;border-radius:20px;font-size:13px;font-weight:700;transition:transform 0.3s;z-index:200;white-space:nowrap;}
 .toast.show{transform:translateX(-50%) translateY(0);}
 </style>
 </head>
 <body>
 
-<!-- ═══ PROFILE SELECTION SCREEN ═══ -->
+<!-- ═══ PROFILE SCREEN ═══ -->
 <div class="screen active" id="screen-profiles">
   <div class="profile-header">
     <div class="app-logo">🦉</div>
     <div class="app-name">WordWise Junior</div>
-    <div class="app-tagline">Cambridge English · Pre A1 → A2 Key</div>
+    <div class="app-tagline">Cambridge English · Class 4 – 6</div>
   </div>
   <div class="profiles-wrap">
     <div class="profiles-title">Who's learning today?</div>
@@ -302,18 +199,12 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);min-h
   <div class="settings-card">
     <div class="settings-row" onclick="goTo('screen-settings')">
       <div class="settings-icon">📊</div>
-      <div class="settings-text">
-        <div class="stitle">Google Sheets</div>
-        <div class="ssub" id="sheetsStatus">Not connected</div>
-      </div>
+      <div class="settings-text"><div class="stitle">Content & API Settings</div><div class="ssub" id="sheetsStatus">Google Sheets not connected</div></div>
       <div class="settings-arrow">›</div>
     </div>
-    <div class="settings-row" onclick="goTo('screen-settings')">
-      <div class="settings-icon">🤖</div>
-      <div class="settings-text">
-        <div class="stitle">AI Question Generator</div>
-        <div class="ssub">Powered by Claude</div>
-      </div>
+    <div class="settings-row" onclick="goTo('screen-qbank')">
+      <div class="settings-icon">📦</div>
+      <div class="settings-text"><div class="stitle">Question Bank</div><div class="ssub">View all built-in questions</div></div>
       <div class="settings-arrow">›</div>
     </div>
   </div>
@@ -328,7 +219,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);min-h
         <div class="home-avatar" id="homeAvatar">🐻</div>
         <div>
           <div class="home-name" id="homeName">Student</div>
-          <div class="home-level-badge" id="homeLevelBadge">Pre A1 Starters</div>
+          <div class="home-level-badge" id="homeLevelBadge">Class 4</div>
         </div>
       </div>
       <button class="settings-btn" onclick="goTo('screen-settings')">⚙️</button>
@@ -340,53 +231,46 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);min-h
       <div class="stat-pill"><div class="snum" id="homeCompleted">0</div><div class="slbl">Done</div></div>
     </div>
   </div>
-
   <div class="level-tabs">
-    <div class="level-tab starter active" onclick="selectLevel(this,'starter')">Pre A1 Starters</div>
-    <div class="level-tab mover" onclick="selectLevel(this,'mover')">A1 Movers</div>
-    <div class="level-tab flyer" onclick="selectLevel(this,'flyer')">A2 Flyers</div>
-    <div class="level-tab ket" onclick="selectLevel(this,'ket')">A2 Key</div>
+    <div class="level-tab class4 active" data-level="class4" onclick="selectLevel(this,'class4')">Class 4</div>
+    <div class="level-tab class5" data-level="class5" onclick="selectLevel(this,'class5')">Class 5</div>
+    <div class="level-tab class6" data-level="class6" onclick="selectLevel(this,'class6')">Class 6</div>
   </div>
-
   <div class="section-label">Practice Topics</div>
   <div class="modules-grid">
     <button class="module-card vocab" onclick="startLesson('vocab')">
-      <span class="mc-emoji">📚</span>
-      <span class="mc-label">Vocabulary</span>
-      <span class="mc-sub">Learn new words</span>
-      <span class="mc-pill" id="vocabPill">AI-powered</span>
+      <span class="mc-emoji">📚</span><span class="mc-label">Vocabulary</span>
+      <span class="mc-sub">Meanings & usage</span>
+      <span class="mc-pill" id="vocabPill">40 words</span>
       <div class="mc-progress"><div class="mc-progress-fill" id="vocabProg" style="width:0%"></div></div>
     </button>
     <button class="module-card reading" onclick="startLesson('reading')">
-      <span class="mc-emoji">📖</span>
-      <span class="mc-label">Reading</span>
-      <span class="mc-sub">Stories & questions</span>
-      <span class="mc-pill" id="readingPill">AI-powered</span>
+      <span class="mc-emoji">📖</span><span class="mc-label">Reading</span>
+      <span class="mc-sub">Passages & comprehension</span>
+      <span class="mc-pill" id="readingPill">6 passages</span>
       <div class="mc-progress"><div class="mc-progress-fill" id="readingProg" style="width:0%"></div></div>
     </button>
     <button class="module-card grammar" onclick="startLesson('grammar')">
-      <span class="mc-emoji">🔤</span>
-      <span class="mc-label">Grammar</span>
-      <span class="mc-sub">Rules & practice</span>
-      <span class="mc-pill" id="grammarPill">AI-powered</span>
+      <span class="mc-emoji">🔤</span><span class="mc-label">Grammar</span>
+      <span class="mc-sub">Rules & fill-in-blanks</span>
+      <span class="mc-pill" id="grammarPill">50 questions</span>
       <div class="mc-progress"><div class="mc-progress-fill" id="grammarProg" style="width:0%"></div></div>
     </button>
-    <button class="module-card listening" onclick="startLesson('listening')">
-      <span class="mc-emoji">🎧</span>
-      <span class="mc-label">Listening</span>
-      <span class="mc-sub">Hear & respond</span>
-      <span class="mc-pill">Coming soon</span>
+    <button class="module-card spelling" onclick="startLesson('spelling')">
+      <span class="mc-emoji">🔡</span><span class="mc-label">Spelling</span>
+      <span class="mc-sub">Find the correct spelling</span>
+      <span class="mc-pill" id="spellingPill">30 words</span>
+      <div class="mc-progress"><div class="mc-progress-fill" id="spellingProg" style="width:0%"></div></div>
+    </button>
+    <button class="module-card jumble" onclick="startLesson('jumble')">
+      <span class="mc-emoji">🧩</span><span class="mc-label">Word Jumble</span>
+      <span class="mc-sub">Unscramble the sentence</span>
+      <span class="mc-pill" id="jumblePill">20 sentences</span>
+      <div class="mc-progress"><div class="mc-progress-fill" id="jumbleProg" style="width:0%"></div></div>
     </button>
     <button class="module-card writing" onclick="startLesson('writing')">
-      <span class="mc-emoji">✏️</span>
-      <span class="mc-label">Writing</span>
-      <span class="mc-sub">Sentences & more</span>
-      <span class="mc-pill">Coming soon</span>
-    </button>
-    <button class="module-card speaking" onclick="startLesson('speaking')">
-      <span class="mc-emoji">🗣️</span>
-      <span class="mc-label">Speaking</span>
-      <span class="mc-sub">Describe & chat</span>
+      <span class="mc-emoji">✏️</span><span class="mc-label">Writing</span>
+      <span class="mc-sub">Guided writing tasks</span>
       <span class="mc-pill">Coming soon</span>
     </button>
   </div>
@@ -399,12 +283,23 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);min-h
       <button class="back-btn" onclick="goTo('screen-home')" style="flex-shrink:0;">‹</button>
       <div>
         <div class="lesson-title" id="lessonTitle">Vocabulary</div>
-        <div class="lesson-sub" id="lessonSub">Generating questions…</div>
+        <div class="lesson-sub" id="lessonSub">Loading…</div>
       </div>
     </div>
     <div class="progress-track"><div class="progress-fill" id="lessonProgress" style="width:0%"></div></div>
   </div>
   <div class="lesson-body" id="lessonBody"></div>
+</div>
+
+<!-- ═══ QUESTION BANK SCREEN ═══ -->
+<div class="screen" id="screen-qbank">
+  <div class="settings-header">
+    <div class="settings-htop">
+      <button class="back-btn" onclick="goTo('screen-profiles')">‹</button>
+      <div class="settings-htitle">Question Bank</div>
+    </div>
+  </div>
+  <div class="qbank-section" style="margin-top:16px;" id="qbankContent"></div>
 </div>
 
 <!-- ═══ SETTINGS SCREEN ═══ -->
@@ -417,49 +312,20 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);min-h
   </div>
   <div class="sheets-form">
     <div class="sheets-info">
-      <p><strong>How to connect Google Sheets:</strong><br>
-      1. Create a Google Sheet with columns: <code>level</code>, <code>type</code>, <code>content</code><br>
-      2. Share it → Anyone with the link can view<br>
-      3. File → Share → Publish to web → CSV format<br>
-      4. Paste the published CSV URL below</p>
+      <p><strong>Connect Google Sheets for custom content:</strong><br>
+      Create a sheet with columns: <code>level</code>, <code>type</code>, <code>content</code><br>
+      File → Share → Publish to web → CSV → paste URL below.</p>
     </div>
     <div class="form-group">
       <label class="form-label">Google Sheets CSV URL</label>
-      <input class="form-input" id="sheetsUrl" type="url" placeholder="https://docs.google.com/spreadsheets/d/…/pub?output=csv" />
+      <input class="form-input" id="sheetsUrl" type="url" placeholder="https://docs.google.com/spreadsheets/d/…/pub?output=csv"/>
     </div>
     <div class="form-group">
-      <label class="form-label">Anthropic API Key</label>
-      <input class="form-input" id="apiKey" type="password" placeholder="sk-ant-…" />
-      <p style="font-size:11px;color:var(--muted);margin-top:6px;font-weight:600;">Stored locally on this device only. Never shared.</p>
+      <label class="form-label">Anthropic API Key (for AI-generated questions)</label>
+      <input class="form-input" id="apiKey" type="password" placeholder="sk-ant-…"/>
+      <p style="font-size:11px;color:var(--muted);margin-top:6px;font-weight:600;">Stored locally on device only. Never shared.</p>
     </div>
     <button class="save-btn" id="saveSettingsBtn" onclick="saveSettings()">Save Settings</button>
-
-    <div style="margin-top:20px;">
-      <div class="form-label" style="margin-bottom:12px;">Built-in Fallback Content (works without Sheets)</div>
-      <div class="settings-card">
-        <div class="settings-row">
-          <div class="settings-icon">✅</div>
-          <div class="settings-text">
-            <div class="stitle">Starter Vocabulary</div>
-            <div class="ssub">20 words built-in</div>
-          </div>
-        </div>
-        <div class="settings-row">
-          <div class="settings-icon">✅</div>
-          <div class="settings-text">
-            <div class="stitle">Starter Grammar</div>
-            <div class="ssub">8 topics built-in</div>
-          </div>
-        </div>
-        <div class="settings-row">
-          <div class="settings-icon">✅</div>
-          <div class="settings-text">
-            <div class="stitle">Starter Reading</div>
-            <div class="ssub">3 passages built-in</div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -469,7 +335,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);min-h
     <h3>Add a Learner</h3>
     <div class="form-group">
       <label class="form-label">Name</label>
-      <input class="form-input" id="newProfileName" placeholder="e.g. Priya" maxlength="20"/>
+      <input class="form-input" id="newProfileName" placeholder="e.g. Arjun" maxlength="20"/>
     </div>
     <div class="form-group">
       <label class="form-label">Choose an avatar</label>
@@ -485,12 +351,11 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);min-h
       </div>
     </div>
     <div class="form-group">
-      <label class="form-label">Starting Level</label>
+      <label class="form-label">Class</label>
       <div class="level-picker" id="levelPicker">
-        <div class="level-opt selected" data-level="starter" onclick="selectLevelOpt(this)">Pre A1</div>
-        <div class="level-opt" data-level="mover" onclick="selectLevelOpt(this)">A1 Movers</div>
-        <div class="level-opt" data-level="flyer" onclick="selectLevelOpt(this)">A2 Flyers</div>
-        <div class="level-opt" data-level="ket" onclick="selectLevelOpt(this)">A2 Key</div>
+        <div class="level-opt selected" data-level="class4" onclick="selectLevelOpt(this)">Class 4</div>
+        <div class="level-opt" data-level="class5" onclick="selectLevelOpt(this)">Class 5</div>
+        <div class="level-opt" data-level="class6" onclick="selectLevelOpt(this)">Class 6</div>
       </div>
     </div>
     <div class="modal-actions">
@@ -502,456 +367,571 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);min-h
 
 <div class="toast" id="toast"></div>
 
-<!-- ═══════════════ JAVASCRIPT ═══════════════ -->
 <script>
-// ── STATE ──────────────────────────────────────────
+// ═══════════════════════════════════════════════════
+//  QUESTION BANK — Class 4 Cambridge-aligned
+// ═══════════════════════════════════════════════════
+const QB = {
+
+  // ── VOCABULARY ────────────────────────────────────
+  vocab: {
+    class4: [
+      {word:"enormous",phonetic:"/ɪˈnɔː.məs/",context:"The elephant was enormous.",options:["Very tiny and small","Very dark and gloomy","Very large in size","Very fast and quick"],answer:2,explanation:"'Enormous' means very large. E.g. an enormous building."},
+      {word:"ancient",phonetic:"/ˈeɪn.ʃənt/",context:"We visited an ancient temple.",options:["Very modern and new","Very old, from long ago","Very beautiful and grand","Very tall and towering"],answer:1,explanation:"'Ancient' means very old, belonging to the distant past."},
+      {word:"curious",phonetic:"/ˈkjʊə.ri.əs/",context:"The curious child peeked inside.",options:["Eager to learn or know","Very tired and sleepy","Angry and upset","Bored and uninterested"],answer:0,explanation:"'Curious' means eager to know or find out about something."},
+      {word:"exhausted",phonetic:"/ɪɡˈzɔːs.tɪd/",context:"After the race, she was exhausted.",options:["Very hungry","Extremely happy","Completely tired out","Very excited"],answer:2,explanation:"'Exhausted' means completely tired, with no energy left."},
+      {word:"gloomy",phonetic:"/ˈɡluː.mi/",context:"The sky looked gloomy before the storm.",options:["Bright and sunny","Dark and unhappy","Colourful and vivid","Warm and cosy"],answer:1,explanation:"'Gloomy' means dark, dull, or sad in appearance."},
+      {word:"fierce",phonetic:"/fɪəs/",context:"The fierce lion roared loudly.",options:["Very gentle and calm","Very small and weak","Very wild and aggressive","Very slow and lazy"],answer:2,explanation:"'Fierce' means very aggressive, powerful, or intense."},
+      {word:"magnificent",phonetic:"/mæɡˈnɪf.ɪ.sənt/",context:"The palace was magnificent.",options:["Plain and ordinary","Impressively beautiful","Very old and broken","Small and cramped"],answer:1,explanation:"'Magnificent' means very impressive, beautiful, or grand."},
+      {word:"timid",phonetic:"/ˈtɪm.ɪd/",context:"The timid mouse hid behind the box.",options:["Very brave and bold","Very loud and noisy","Easily frightened, shy","Very clever and smart"],answer:2,explanation:"'Timid' means showing a lack of courage or confidence; shy."},
+      {word:"harvest",phonetic:"/ˈhɑː.vɪst/",context:"Farmers were busy during the harvest.",options:["The season of floods","Gathering ripe crops","Planting new seeds","A heavy rainfall"],answer:1,explanation:"'Harvest' means the process of gathering ripe crops from the fields."},
+      {word:"persuade",phonetic:"/pəˈsweɪd/",context:"She tried to persuade him to join.",options:["To frighten someone","To cause someone pain","To convince someone to do something","To give someone a gift"],answer:2,explanation:"'Persuade' means to convince someone to do or believe something."},
+      {word:"obstacle",phonetic:"/ˈɒb.stɪ.kəl/",context:"The fallen tree was an obstacle on the path.",options:["A helpful guide","A thing that blocks progress","A type of plant","A wild animal"],answer:1,explanation:"'Obstacle' means something that blocks your way or prevents progress."},
+      {word:"magnificent",phonetic:"/mæɡˈnɪf.ɪ.sənt/",context:"It was a magnificent view from the top.",options:["Terrifying and scary","Very ordinary","Impressively beautiful","Extremely loud"],answer:2,explanation:"'Magnificent' means splendid and impressively beautiful."},
+      {word:"mischievous",phonetic:"/ˈmɪs.tʃɪ.vəs/",context:"The mischievous boy hid his sister's shoes.",options:["Very serious and quiet","Causing trouble in a playful way","Very kind and generous","Always obedient"],answer:1,explanation:"'Mischievous' means causing playful trouble or minor harm."},
+      {word:"grateful",phonetic:"/ˈɡreɪt.fəl/",context:"She was grateful for their help.",options:["Very angry","Feeling thankful","Very confused","Very bored"],answer:1,explanation:"'Grateful' means feeling or showing thanks for something received."},
+      {word:"scarce",phonetic:"/skeəs/",context:"Water was scarce in the desert.",options:["Very plentiful","Extremely hot","In short supply","Very cold"],answer:0,explanation:"Wait — 'scarce' means in short supply, hard to find. The correct answer is 'In short supply'."},
+      {word:"scarce",phonetic:"/skeəs/",context:"Water was scarce in the desert.",options:["Very plentiful and common","Extremely hot and dry","In short supply; hard to find","Very cold and frozen"],answer:2,explanation:"'Scarce' means not enough of something; difficult to find."},
+      {word:"transparent",phonetic:"/trænsˈpær.ənt/",context:"The transparent glass let light through.",options:["Very thick and heavy","See-through, clear","Dark and opaque","Rough and uneven"],answer:1,explanation:"'Transparent' means allowing light to pass through so objects behind can be clearly seen."},
+      {word:"inhabit",phonetic:"/ɪnˈhæb.ɪt/",context:"Many animals inhabit the rainforest.",options:["To destroy a place","To visit briefly","To live in a place","To build a structure"],answer:2,explanation:"'Inhabit' means to live in or occupy a place."},
+      {word:"anxious",phonetic:"/ˈæŋk.ʃəs/",context:"She felt anxious before her exam.",options:["Very happy and excited","Worried and nervous","Very calm and relaxed","Very sleepy and tired"],answer:1,explanation:"'Anxious' means feeling worried or nervous about something uncertain."},
+      {word:"courageous",phonetic:"/kəˈreɪ.dʒəs/",context:"The courageous firefighter saved the child.",options:["Very frightened","Not very smart","Very brave","Very tall"],answer:2,explanation:"'Courageous' means not deterred by danger or pain; brave."},
+    ],
+    class5: [
+      {word:"anticipate",phonetic:"/ænˈtɪs.ɪ.peɪt/",context:"We anticipate a busy weekend.",options:["To forget about","To expect or look forward to","To complain about","To be angry about"],answer:1,explanation:"'Anticipate' means to expect or look forward to something."},
+      {word:"abundance",phonetic:"/əˈbʌn.dəns/",context:"There was an abundance of fruit.",options:["A total lack of something","A very large quantity","A small amount","A single piece"],answer:1,explanation:"'Abundance' means a very large quantity of something."},
+      {word:"consequence",phonetic:"/ˈkɒn.sɪ.kwəns/",context:"Being rude has consequences.",options:["A kind reward","A result of an action","A type of question","A friendly greeting"],answer:1,explanation:"'Consequence' means a result or effect of an action or condition."},
+      {word:"sophisticated",phonetic:"/səˈfɪs.tɪ.keɪ.tɪd/",context:"The design was sophisticated.",options:["Very simple and basic","Developed or complex","Very old-fashioned","Very noisy"],answer:1,explanation:"'Sophisticated' means highly developed, complex, or refined."},
+      {word:"persevere",phonetic:"/ˌpɜː.sɪˈvɪər/",context:"You must persevere to succeed.",options:["To give up easily","To continue despite difficulty","To ask for help","To take a break"],answer:1,explanation:"'Persevere' means to continue in a course of action despite difficulty."},
+    ],
+    class6: [
+      {word:"ambiguous",phonetic:"/æmˈbɪɡ.ju.əs/",context:"Her answer was ambiguous.",options:["Very clear and direct","Open to more than one meaning","Very long and detailed","Completely wrong"],answer:1,explanation:"'Ambiguous' means open to more than one interpretation; not clear."},
+      {word:"inevitable",phonetic:"/ɪnˈev.ɪ.tə.bəl/",context:"Change is inevitable.",options:["Easily avoided","Certain to happen","Very surprising","Very unusual"],answer:1,explanation:"'Inevitable' means certain to happen and impossible to avoid."},
+      {word:"prejudice",phonetic:"/ˈpredʒ.ʊ.dɪs/",context:"We must fight prejudice.",options:["A fair decision","An unfair preformed opinion","A type of argument","A form of praise"],answer:1,explanation:"'Prejudice' means an unfair opinion formed without enough knowledge."},
+    ]
+  },
+
+  // ── READING ───────────────────────────────────────
+  reading: {
+    class4: [
+      {
+        title:"The Lost Kite",
+        passage:"One windy afternoon, Rahul and his younger sister Priya went to the park to fly their new red kite. The kite soared high into the blue sky, dancing in the breeze. Suddenly, the string snapped and the kite flew away over the rooftops. Priya began to cry, but Rahul held her hand. 'Don't worry,' he said. 'We'll save our pocket money and buy a better one.' Priya wiped her tears and smiled. Together, they walked home, already making plans for their next kite.",
+        questions:[
+          {q:"What colour was the kite?",options:["Blue","Green","Red","Yellow"],answer:2,explanation:"The passage says 'their new red kite'."},
+          {q:"Why did the kite fly away?",options:["The wind stopped blowing","Rahul let go on purpose","The string snapped","Priya dropped it"],answer:2,explanation:"The passage says 'the string snapped and the kite flew away'."},
+          {q:"How did Rahul comfort Priya?",options:["He bought her ice cream","He promised to save money for a new kite","He told her it was her fault","He ran after the kite"],answer:1,explanation:"Rahul said 'We'll save our pocket money and buy a better one.'"},
+          {q:"What does the word 'soared' mean in this passage?",options:["Fell quickly downwards","Flew high up into the air","Spun around in circles","Moved slowly along the ground"],answer:1,explanation:"'Soared' means to fly or rise high into the air."},
+        ]
+      },
+      {
+        title:"The Clever Crow",
+        passage:"A crow was very thirsty. He flew for a long time looking for water. At last, he found a pot with a little water at the bottom. He tried to drink but his beak could not reach the water. He did not give up. He looked around and saw some small pebbles nearby. One by one, he dropped the pebbles into the pot. Slowly, the water rose up. When the water was high enough, he drank it happily. He had solved the problem by thinking carefully.",
+        questions:[
+          {q:"Why could the crow not drink at first?",options:["The water was too hot","His beak could not reach the water","Another bird chased him away","The pot was too heavy"],answer:1,explanation:"The passage says 'his beak could not reach the water'."},
+          {q:"What did the crow drop into the pot?",options:["Sand","Twigs","Small pebbles","Big stones"],answer:2,explanation:"'He saw some small pebbles nearby. One by one, he dropped the pebbles into the pot.'"},
+          {q:"What is the main lesson of this story?",options:["Always carry water with you","Crows are the cleverest birds","Thinking carefully can help solve problems","Never go anywhere alone"],answer:2,explanation:"The crow solved his problem by thinking carefully instead of giving up."},
+        ]
+      },
+      {
+        title:"A Visit to the Museum",
+        passage:"Last Saturday, our class visited the National Museum. Our teacher, Ms. Sharma, told us to stay together and not to touch the exhibits. The museum had three floors. On the first floor, we saw ancient coins and pottery. On the second floor, there were paintings and sculptures from hundreds of years ago. The third floor had interactive science displays. My favourite was a model of the solar system that actually moved! After the visit, we wrote about what we had learnt. I want to become a scientist one day.",
+        questions:[
+          {q:"What instruction did Ms. Sharma give?",options:["Take photographs of everything","Stay together and do not touch the exhibits","Buy something from the gift shop","Write notes about every exhibit"],answer:1,explanation:"Ms. Sharma told them 'to stay together and not to touch the exhibits'."},
+          {q:"On which floor were the science displays?",options:["First floor","Second floor","Third floor","Ground floor"],answer:2,explanation:"'The third floor had interactive science displays.'"},
+          {q:"What was the narrator's favourite exhibit?",options:["Ancient coins","Old paintings","A moving model of the solar system","A sculpture"],answer:2,explanation:"'My favourite was a model of the solar system that actually moved!'"},
+          {q:"What does 'interactive' most likely mean?",options:["Very old and fragile","Allowing visitors to take part","Extremely expensive","Behind locked glass"],answer:1,explanation:"'Interactive' means designed so that the user can actively take part rather than just observe."},
+        ]
+      },
+      {
+        title:"Rain in the City",
+        passage:"The monsoon arrived suddenly on a Tuesday morning. Dark clouds gathered over the city and within minutes, heavy rain poured down. Streets flooded quickly because the drains were blocked with rubbish. People ran for shelter under shop awnings and bus stops. Street vendors hurriedly covered their goods with plastic sheets. A young boy sat happily on his doorstep, letting the rain splash on his feet. His mother called him inside, but he pretended not to hear. For him, the first rain of the season was pure joy.",
+        questions:[
+          {q:"Why did the streets flood quickly?",options:["There was too much rain every year","The city had no rivers nearby","The drains were blocked with rubbish","The roads were very old"],answer:2,explanation:"The passage says 'Streets flooded quickly because the drains were blocked with rubbish.'"},
+          {q:"What did street vendors do when it rained?",options:["They packed up and went home","They covered their goods with plastic sheets","They ran to the nearest shop","They sold umbrellas to passers-by"],answer:1,explanation:"'Street vendors hurriedly covered their goods with plastic sheets.'"},
+          {q:"How did the young boy feel about the rain?",options:["He was frightened by it","He was annoyed it got him wet","He felt pure joy","He was worried about his school"],answer:2,explanation:"'For him, the first rain of the season was pure joy.'"},
+        ]
+      },
+      {
+        title:"Saving the River",
+        passage:"The children of Green Valley School decided to save their local river, which had become dirty and polluted. They formed a club called 'River Guardians'. Every Saturday morning, they collected rubbish from the riverbank. They also made posters asking people not to throw waste into the water. Some students tested the water quality using a simple kit from their science class. After three months, the water was cleaner and small fish began to return. Their teacher said, 'You have proved that young people can make a real difference.'",
+        questions:[
+          {q:"What was the name of the children's club?",options:["Green Valley Heroes","River Savers","River Guardians","The Clean Team"],answer:2,explanation:"They formed a club called 'River Guardians'."},
+          {q:"How long did it take for the water to improve?",options:["One week","One month","Six months","Three months"],answer:3,explanation:"'After three months, the water was cleaner.'"},
+          {q:"Which word in the passage means 'made dirty by harmful substances'?",options:["Collected","Polluted","Proved","Tested"],answer:1,explanation:"'Polluted' means made dirty or harmful by chemicals or waste."},
+          {q:"What sign showed that the river was getting better?",options:["The water turned blue","Flowers grew on the bank","Small fish began to return","The club got an award"],answer:2,explanation:"'Small fish began to return' showed the river was recovering."},
+        ]
+      },
+      {
+        title:"The New Girl",
+        passage:"Meera joined Class 4B on a cold January morning. She sat quietly at the back, not knowing anyone. During break time, while others played, she stood alone near the wall, watching. Naina noticed her. 'Come and play with us!' she called. Meera hesitated, then smiled and walked over. They played catch until the bell rang. As they walked back to class, Naina said, 'I was new here last year. I know how lonely it feels.' Meera felt warmth spread through her. Making one friend, she thought, was enough for the first day.",
+        questions:[
+          {q:"How did Meera feel when she first arrived?",options:["Happy and excited","Alone and not knowing anyone","Angry at her parents","Bored with school"],answer:1,explanation:"'She sat quietly at the back, not knowing anyone' shows she felt alone."},
+          {q:"What game did the girls play at break time?",options:["Hide and seek","Football","Catch","Skipping"],answer:2,explanation:"'They played catch until the bell rang.'"},
+          {q:"Why did Naina understand how Meera felt?",options:["She had read about it in a book","She had been new at the school the year before","Her teacher had told her","She had a shy sister"],answer:1,explanation:"Naina said 'I was new here last year. I know how lonely it feels.'"},
+          {q:"What does 'hesitated' mean in this passage?",options:["Ran quickly without stopping","Laughed very loudly","Paused before acting","Shouted angrily"],answer:2,explanation:"'Hesitated' means to pause before doing something, often due to uncertainty."},
+        ]
+      },
+    ],
+    class5:[
+      {
+        title:"The Amazon Rainforest",
+        passage:"The Amazon rainforest, often called the 'lungs of the Earth', covers over five million square kilometres across nine countries in South America. It produces approximately twenty percent of the world's oxygen. The forest is home to an astonishing variety of life — scientists estimate that one in ten known species on Earth lives there. However, the rainforest faces serious threats. Deforestation, driven by farming and logging, destroys around 75,000 square kilometres every year. If this continues, experts warn that irreversible damage could occur within decades, affecting climate and biodiversity worldwide.",
+        questions:[
+          {q:"Why is the Amazon called the 'lungs of the Earth'?",options:["It is very large and green","It produces a significant portion of the world's oxygen","Animals breathe loudly there","It contains underground rivers"],answer:1,explanation:"The Amazon produces approximately twenty percent of the world's oxygen, like lungs supplying air."},
+          {q:"What is the main threat to the rainforest mentioned?",options:["Tourism","Flooding","Deforestation","Earthquakes"],answer:2,explanation:"The passage states deforestation, driven by farming and logging, is the main threat."},
+          {q:"What does 'irreversible' mean?",options:["Easily fixed","Cannot be undone","Very surprising","Happening slowly"],answer:1,explanation:"'Irreversible' means impossible to undo or reverse."},
+        ]
+      }
+    ],
+    class6:[
+      {
+        title:"Artificial Intelligence in Schools",
+        passage:"Artificial intelligence is rapidly changing the way students learn. Adaptive learning platforms can now identify a student's weak areas and generate personalised exercises, allowing each child to progress at their own pace. Proponents argue that AI frees teachers from repetitive tasks, giving them more time for meaningful interaction with students. Critics, however, raise concerns. They worry that an over-reliance on AI could reduce critical thinking, as students may accept AI-generated answers without questioning them. Striking the right balance between technological tools and human-led education remains one of the most important challenges facing schools today.",
+        questions:[
+          {q:"According to the passage, how does AI help students?",options:["It replaces all teachers","It identifies weak areas and creates personalised exercises","It marks all examinations automatically","It writes essays for students"],answer:1,explanation:"The passage says AI can 'identify a student's weak areas and generate personalised exercises'."},
+          {q:"What concern do critics raise about AI?",options:["AI is too expensive","AI could reduce critical thinking","AI makes lessons too easy","AI replaces sports and arts"],answer:1,explanation:"Critics worry students 'may accept AI-generated answers without questioning them', reducing critical thinking."},
+          {q:"What does 'adaptive' mean in this context?",options:["Very advanced technology","Able to adjust to different needs","Very expensive software","Designed for teachers only"],answer:1,explanation:"'Adaptive' means able to change or adjust to suit different situations or needs."},
+        ]
+      }
+    ]
+  },
+
+  // ── GRAMMAR ───────────────────────────────────────
+  grammar: {
+    class4:[
+      {q:"Choose the correct verb:\n'The children ___ playing in the garden.'",options:["is","was","are","am"],answer:2,explanation:"'Children' is plural, so we use 'are' — 'The children are playing.'"},
+      {q:"Which sentence uses the past tense correctly?",options:["She go to school yesterday.","She gone to school yesterday.","She went to school yesterday.","She goed to school yesterday."],answer:2,explanation:"The past tense of 'go' is 'went'. 'She went to school yesterday.'"},
+      {q:"Choose the correct article:\n'She ate ___ orange for breakfast.'",options:["a","an","the","no article"],answer:1,explanation:"We use 'an' before words starting with a vowel sound. 'Orange' starts with 'o', so it's 'an orange'."},
+      {q:"Fill in the blank with the correct preposition:\n'The cat is hiding ___ the sofa.'",options:["on","above","under","beside"],answer:2,explanation:"'Under the sofa' means below it. The cat is hiding under the sofa."},
+      {q:"Which is the correct plural?\n'One child, two ___'",options:["childs","childes","children","childrens"],answer:2,explanation:"'Child' has an irregular plural — 'children', not 'childs' or 'childrens'."},
+      {q:"Choose the correct form:\n'She ___ her homework before dinner.'",options:["finish","finishes","finished","finishing"],answer:2,explanation:"This describes a completed past action, so we use the past tense 'finished'."},
+      {q:"Which word is an adjective in this sentence?\n'The tall boy won the race.'",options:["boy","tall","won","race"],answer:1,explanation:"'Tall' is the adjective — it describes the noun 'boy'."},
+      {q:"Choose the correct conjunction:\n'I wanted to play outside ___ it was raining.'",options:["and","so","but","or"],answer:2,explanation:"'But' shows a contrast — wanting to play outside contrasts with the rain."},
+      {q:"Fill in the blank:\n'This is ___ book. It belongs to Ravi.'",options:["his","her","their","its"],answer:0,explanation:"'Ravi' is male, so we use 'his'. 'This is his book.'"},
+      {q:"Which sentence is in the future tense?",options:["He played cricket all day.","He plays cricket every day.","He will play cricket tomorrow.","He was playing cricket."],answer:2,explanation:"'Will play' indicates the future tense."},
+      {q:"Choose the correct comparative form:\n'This bag is ___ than that one.'",options:["heavy","more heavy","heavier","heaviest"],answer:2,explanation:"For short adjectives like 'heavy', we add '-er' to compare: 'heavier'."},
+      {q:"Which word is the noun in this sentence?\n'The brave soldier crossed the river.'",options:["brave","crossed","soldier","the"],answer:2,explanation:"'Soldier' is the noun — it names a person."},
+      {q:"Choose the correct question tag:\n'She is your friend, ___ ?'",options:["isn't she","is she","wasn't she","aren't she"],answer:0,explanation:"The tag for 'She is' is 'isn't she' — we reverse the verb and make it negative."},
+      {q:"Fill in the blank with 'has' or 'have':\n'My parents ___ gone to the market.'",options:["has","have","had","having"],answer:1,explanation:"'Parents' is plural, so we use 'have' — 'My parents have gone.'"},
+      {q:"Which sentence uses a pronoun correctly?",options:["Me and Ritu went shopping.","Ritu and me went shopping.","Ritu and I went shopping.","I and Ritu went shopping."],answer:2,explanation:"When talking about yourself and another person, always put the other person first and use 'I': 'Ritu and I went shopping.'"},
+      {q:"Choose the correct passive voice:\n'The teacher ___ the examination paper.'",options:["distributed","was distributed","were distributed","is distributing"],answer:0,explanation:"This is active voice. The teacher is the subject doing the action. 'distributed' is the simple past."},
+      {q:"Which punctuation should end this sentence?\n'What time does the train leave'",options:[".","!","?",","],answer:2,explanation:"This is a question, so it ends with a question mark (?)."},
+      {q:"Identify the adverb:\n'She sings beautifully.'",options:["She","sings","beautifully","the"],answer:2,explanation:"'Beautifully' is the adverb — it describes how she sings."},
+      {q:"Choose the correct word:\n'There are ___ apples left in the basket.'",options:["little","much","few","less"],answer:2,explanation:"'Few' is used with countable nouns (apples). 'Little' is for uncountable nouns."},
+      {q:"Fill in the blank:\n'Neither the boys ___ the girl was present.'",options:["or","nor","and","but"],answer:1,explanation:"'Neither...nor' is a paired conjunction: 'Neither the boys nor the girl was present.'"},
+      {q:"Which sentence is correct?",options:["He don't like vegetables.","He doesn't likes vegetables.","He doesn't like vegetables.","He not like vegetables."],answer:2,explanation:"With 'he/she/it', we use 'doesn't' (does not) + base verb: 'He doesn't like.'"},
+      {q:"Identify the type of noun:\n'honesty'",options:["Proper noun","Common noun","Collective noun","Abstract noun"],answer:3,explanation:"'Honesty' is an abstract noun — it names a quality or concept, not a physical thing."},
+      {q:"Choose the correct word:\n'The team ___ won the championship.'",options:["have","has","had been","were"],answer:1,explanation:"'Team' is a collective noun treated as singular in British English: 'The team has won.'"},
+      {q:"Fill in the blank:\n'If it rains tomorrow, we ___ stay at home.'",options:["will","would","shall","should"],answer:0,explanation:"First conditional uses 'if + present simple, will + base verb': 'If it rains, we will stay.'"},
+      {q:"Which is the correct spelling?",options:["recieve","receive","receve","recieve"],answer:1,explanation:"Remember the rule: 'i before e except after c'. So it's 'receive'."},
+    ],
+    class5:[
+      {q:"Change to reported speech:\nShe said, 'I am tired.'\nShe said that she ___ tired.",options:["is","was","were","has been"],answer:1,explanation:"In reported speech, present tense ('am') shifts to past tense ('was')."},
+      {q:"Choose the correct passive voice:\n'The students completed the project.'\nThe project ___ by the students.",options:["was completed","were completed","completed","is completed"],answer:0,explanation:"Passive voice: object + was/were + past participle. 'The project was completed.'"},
+      {q:"Fill in the blank with the correct modal:\n'You ___ not run in the corridor.' (prohibition)",options:["might","must","could","would"],answer:1,explanation:"'Must not' expresses prohibition or a strong rule."},
+      {q:"Identify the clause type:\n'Although it was raining, they went for a walk.'",options:["Simple sentence","Compound sentence","Complex sentence","Compound-complex"],answer:2,explanation:"A complex sentence has an independent clause and a dependent clause. 'Although it was raining' is the dependent clause."},
+      {q:"Which sentence uses the present perfect correctly?",options:["She has went to the market.","She have gone to the market.","She has gone to the market.","She is gone to the market."],answer:2,explanation:"Present perfect: has/have + past participle. 'Gone' is the past participle of 'go'."},
+    ],
+    class6:[
+      {q:"Choose the correct sentence:\n(Active/Passive)",options:["The cake was eaten by him.","Him ate the cake.","The cake eaten by him.","Was the cake ate by him."],answer:0,explanation:"Correct passive: subject + was/were + past participle + by + agent."},
+      {q:"Identify the figure of speech:\n'The wind whispered through the trees.'",options:["Simile","Metaphor","Personification","Alliteration"],answer:2,explanation:"Personification gives human qualities (whispering) to non-human things (wind)."},
+      {q:"Fill in the blank:\n'He is ___ honest man.' (Choose correctly)",options:["a","an","the","no article"],answer:1,explanation:"'Honest' begins with a silent 'h', so it starts with a vowel sound — use 'an': 'an honest man'."},
+    ]
+  },
+
+  // ── SPELLING ──────────────────────────────────────
+  spelling: {
+    class4:[
+      {word:"necessary",options:["necesary","neccesary","necessary","neccessary"],answer:2,tip:"One collar (c) and two socks (ss) — neCESSary"},
+      {word:"friend",options:["freind","frend","friend","friand"],answer:2,tip:"'fri-END' — your friend is at the END."},
+      {word:"because",options:["becaus","becuase","becorse","because"],answer:3,tip:"Big Elephants Can Always Understand Small Elephants — B.E.C.A.U.S.E"},
+      {word:"believe",options:["beleive","beleve","believe","beleave"],answer:2,tip:"Never beLIEve a LIE — the word 'lie' is inside 'believe'."},
+      {word:"separate",options:["seperate","seprate","separate","sepperate"],answer:2,tip:"There is 'a rat' in sep-A-RAT-e."},
+      {word:"environment",options:["enviroment","environment","enviornment","enviorment"],answer:1,tip:"environ-MENT — spell it out carefully."},
+      {word:"library",options:["libary","liberry","library","librery"],answer:2,tip:"LIB-RA-RY — do not drop the first 'r'."},
+      {word:"calendar",options:["calender","calander","calendar","calandar"],answer:2,tip:"CAL-EN-DAR — three sections like a page."},
+      {word:"February",options:["Febuary","February","Feburary","Februry"],answer:1,tip:"Feb-RU-ary — do not forget the first 'r'."},
+      {word:"Wednesday",options:["Wensday","Wendsday","Wednesday","Wedensday"],answer:2,tip:"WED-NES-DAY — Wed is in the middle."},
+      {word:"beautiful",options:["beutiful","beautifull","beautiful","beautyful"],answer:2,tip:"BEAU-TI-FUL — beautiful has 'beau' at the start."},
+      {word:"comfortable",options:["comftable","comfertable","comfortable","comfotable"],answer:2,tip:"COM-FOR-TA-BLE — four syllables."},
+      {word:"definitely",options:["definately","definitley","definitely","definitly"],answer:2,tip:"FINITE is inside definitely — de-FINITE-ly."},
+      {word:"foreign",options:["foriegn","foreign","forign","foreighn"],answer:1,tip:"FOR-EIGN — the 'g' is silent."},
+      {word:"government",options:["goverment","govenment","government","goveriment"],answer:2,tip:"GOVERN-MENT — the word 'govern' is inside."},
+    ],
+    class5:[
+      {word:"accommodation",options:["accomodation","acommodation","accommodation","acomodation"],answer:2,tip:"Double c, double m — acCOMModation."},
+      {word:"conscience",options:["concience","conscience","consience","conscence"],answer:1,tip:"CON-SCIENCE — the word 'science' is inside."},
+      {word:"exaggerate",options:["exagerate","exaggerate","exaggarate","exaggrate"],answer:1,tip:"Double 'g' — ex-AGG-erate."},
+      {word:"mischievous",options:["mischevious","mischievious","mischievous","mischeivous"],answer:2,tip:"MIS-CHIEV-OUS — no extra 'i' after 'v'."},
+      {word:"privilege",options:["priviledge","privelege","privilege","privilage"],answer:2,tip:"PRIV-I-LEGE — ends in 'lege' not 'ledge'."},
+    ]
+  },
+
+  // ── WORD JUMBLE ───────────────────────────────────
+  jumble: {
+    class4:[
+      {scrambled:"morning / every / she / school / goes / to",answer:"She goes to school every morning.",options:["She goes to school every morning.","Every morning she school goes to.","School she every morning to goes.","To school every she goes morning."]},
+      {scrambled:"the / quickly / ran / park / children / to / the",answer:"The children ran quickly to the park.",options:["The children ran quickly to the park.","Quickly the children to the park ran.","The park children ran to quickly.","Children the park quickly to ran."]},
+      {scrambled:"beautiful / the / is / garden / very",answer:"The garden is very beautiful.",options:["The garden is very beautiful.","Beautiful the garden is very.","Very beautiful is the garden.","The very garden is beautiful."]},
+      {scrambled:"his / forgot / he / at / home / lunch",answer:"He forgot his lunch at home.",options:["He forgot his lunch at home.","His lunch he forgot at home.","At home he his lunch forgot.","Forgot he his lunch at home."]},
+      {scrambled:"are / mountains / the / covered / snow / with",answer:"The mountains are covered with snow.",options:["The mountains are covered with snow.","Covered with snow are the mountains.","Snow with the mountains are covered.","The mountains snow are covered with."]},
+      {scrambled:"story / interesting / an / teacher / told / the / us",answer:"The teacher told us an interesting story.",options:["The teacher told us an interesting story.","An interesting story the teacher us told.","Told us the teacher an interesting story.","The teacher us an story interesting told."]},
+      {scrambled:"carefully / she / her / listened / teacher / to",answer:"She listened carefully to her teacher.",options:["She listened carefully to her teacher.","Carefully she her teacher to listened.","She her teacher carefully listened to.","To her teacher she carefully listened."]},
+      {scrambled:"the / will / match / cricket / tomorrow / be",answer:"The cricket match will be tomorrow.",options:["The cricket match will be tomorrow.","Cricket the match tomorrow will be.","Tomorrow will the cricket match be.","Will the cricket match be tomorrow."]},
+      {scrambled:"birds / singing / tree / were / the / in",answer:"The birds were singing in the tree.",options:["The birds were singing in the tree.","In the tree birds were singing.","Singing were the birds in tree.","The tree birds in were singing."]},
+      {scrambled:"excited / very / trip / was / about / she / the",answer:"She was very excited about the trip.",options:["She was very excited about the trip.","Very excited she was about the trip.","About the trip she very excited was.","She the trip was very about excited."]},
+    ],
+    class5:[
+      {scrambled:"pollution / serious / air / has / problem / become / a",answer:"Air pollution has become a serious problem.",options:["Air pollution has become a serious problem.","A serious problem air pollution has become.","Has become a serious problem air pollution.","Air has become pollution a serious problem."]},
+      {scrambled:"discovered / ancient / the / archaeologists / ruins",answer:"The archaeologists discovered ancient ruins.",options:["The archaeologists discovered ancient ruins.","Ancient ruins the archaeologists discovered.","Discovered the archaeologists ancient ruins.","The ancient archaeologists ruins discovered."]},
+      {scrambled:"despite / obstacles / persevered / she / many",answer:"She persevered despite many obstacles.",options:["She persevered despite many obstacles.","Despite many obstacles she persevered.","Persevered she many despite obstacles.","Many obstacles she despite persevered."]},
+    ]
+  }
+};
+
+// ═══════════════════════════════════════════════════
+//  APP STATE
+// ═══════════════════════════════════════════════════
 let profiles = JSON.parse(localStorage.getItem('ww_profiles') || '[]');
 let currentProfile = null;
-let currentLevel = 'starter';
+let currentLevel = 'class4';
 let currentLessonType = null;
 let currentQuestions = [];
 let currentQIndex = 0;
 let sessionScore = 0;
 let sessionCorrect = 0;
 
-// ── BUILT-IN FALLBACK CONTENT ──────────────────────
-const builtIn = {
-  vocab: {
-    starter: [
-      {word:'apple',hint:'a round fruit, often red or green'},
-      {word:'happy',hint:'feeling very joyful and pleased'},
-      {word:'school',hint:'a place where children go to learn'},
-      {word:'run',hint:'to move very quickly on foot'},
-      {word:'yellow',hint:'the bright colour of the sun'},
-      {word:'family',hint:'your parents, brothers and sisters'},
-      {word:'water',hint:'a clear liquid we drink every day'},
-      {word:'cat',hint:'a small furry pet that says meow'},
-    ],
-    mover: [
-      {word:'library',hint:'a building full of books to borrow'},
-      {word:'enormous',hint:'extremely large in size'},
-      {word:'surprised',hint:'feeling shock from something unexpected'},
-      {word:'forest',hint:'a large area of land covered in trees'},
-      {word:'adventure',hint:'an exciting and unusual experience'},
-      {word:'discover',hint:'to find something for the first time'},
-    ],
-    flyer: [
-      {word:'curiosity',hint:'a strong desire to know or learn something'},
-      {word:'determined',hint:'having a firm decision to do something'},
-      {word:'exhausted',hint:'extremely tired after great effort'},
-      {word:'generous',hint:'happy to give more than is expected'},
-    ],
-    ket: [
-      {word:'ambiguous',hint:'open to more than one interpretation'},
-      {word:'persevere',hint:'to continue despite difficulty or delay'},
-      {word:'reliable',hint:'consistently good and able to be trusted'},
-      {word:'negotiate',hint:'to reach an agreement through discussion'},
-    ]
-  },
-  reading: {
-    starter: [
-      {title:"Tom's Dog",passage:"Tom has a dog. The dog is big and brown. His name is Max. Max likes to run in the park. Tom and Max are happy together.",questions:["What colour is the dog?","Where does Max like to run?","What is the dog's name?"]},
-      {title:"My School",passage:"I go to school every day. My school is big and has many rooms. I have a teacher called Miss Green. She is very kind. I like maths and reading.",questions:["When does the child go to school?","What is the teacher's name?","Which subjects does the child like?"]},
-    ],
-    mover: [
-      {title:"The Camping Trip",passage:"Last weekend, our family went camping in the forest. We put up our tent near a river. At night, we could hear owls hooting. In the morning, we cooked eggs over a fire. It was the best weekend ever!",questions:["Where did the family go camping?","What did they hear at night?","What did they cook in the morning?"]},
-    ],
-    flyer: [
-      {title:"A New Planet?",passage:"Scientists recently discovered a small planet at the edge of our solar system. It is covered in ice and takes over 500 years to go around the Sun. Researchers are excited because it may have liquid water underneath the ice, which could support life.",questions:["What covers the new planet?","How long does it take to orbit the Sun?","Why are researchers excited about it?"]},
-    ],
-    ket: [
-      {title:"Social Media and Teenagers",passage:"A recent study found that teenagers who spend more than three hours per day on social media are more likely to report feelings of anxiety and loneliness. However, experts caution that the relationship is complex. Some teenagers use social media to build friendships and find support communities.",questions:["What did the study find about teenagers?","What do experts say about the relationship?","How do some teenagers use social media positively?"]},
-    ]
-  },
-  grammar: {
-    starter: [
-      {topic:"Present Simple (to be)",example:"She ___ a student. (is/are/am)"},
-      {topic:"Articles (a/an)",example:"I have ___ umbrella. (a/an)"},
-      {topic:"Plurals",example:"One cat, two ___ (cats/cates/catss)"},
-      {topic:"Prepositions",example:"The book is ___ the table. (on/in/under)"},
-    ],
-    mover: [
-      {topic:"Past Simple",example:"Yesterday she ___ to school. (walked/walk/walks)"},
-      {topic:"Comparative adjectives",example:"An elephant is ___ than a cat. (bigger/more big/most big)"},
-      {topic:"Can/Can't",example:"Fish ___ breathe underwater. (can/can't/must)"},
-    ],
-    flyer: [
-      {topic:"Present Perfect",example:"I ___ never been to Paris. (have/has/had)"},
-      {topic:"Conditionals (first)",example:"If it rains, we ___ stay inside. (will/would/are)"},
-    ],
-    ket: [
-      {topic:"Passive voice",example:"The letter ___ written by my mother. (was/were/has been)"},
-      {topic:"Reported speech",example:'She said she ___ tired. (was/is/were)'},
-    ]
-  }
-};
+const avatarColors = {'🐻':'#795548','🦊':'#E64A19','🐼':'#37474F','🦁':'#F57F17','🐯':'#BF360C','🐸':'#388E3C','🐧':'#1565C0','🦋':'#7B1FA2'};
+
+function levelLabel(l){return{'class4':'Class 4','class5':'Class 5','class6':'Class 6'}[l]||l;}
 
 // ── PROFILES ──────────────────────────────────────
-const avatarColors = {
-  '🐻':'#795548','🦊':'#E64A19','🐼':'#37474F','🦁':'#F57F17',
-  '🐯':'#BF360C','🐸':'#388E3C','🐧':'#1565C0','🦋':'#7B1FA2'
-};
-
-function renderProfiles() {
-  const grid = document.getElementById('profilesGrid');
-  grid.innerHTML = '';
-  profiles.forEach((p,i) => {
-    const col = avatarColors[p.avatar] || '#5C35C8';
-    grid.innerHTML += `
-      <div class="profile-card" onclick="loadProfile(${i})">
-        <div class="profile-avatar" style="background:${col}20;color:${col};">${p.avatar}</div>
-        <div class="profile-name">${p.name}</div>
-        <div class="profile-level">${levelLabel(p.level)}</div>
-      </div>`;
-  });
-  grid.innerHTML += `
-    <div class="profile-card add-profile" onclick="openModal()">
-      <div class="profile-avatar">+</div>
-      <div class="profile-name" style="color:var(--purple);">Add Learner</div>
+function renderProfiles(){
+  const grid=document.getElementById('profilesGrid');
+  grid.innerHTML='';
+  profiles.forEach((p,i)=>{
+    const col=avatarColors[p.avatar]||'#5C35C8';
+    grid.innerHTML+=`<div class="profile-card" onclick="loadProfile(${i})">
+      <div class="profile-avatar" style="background:${col}20;color:${col};">${p.avatar}</div>
+      <div class="profile-name">${p.name}</div>
+      <div class="profile-level">${levelLabel(p.level)}</div>
     </div>`;
+  });
+  grid.innerHTML+=`<div class="profile-card add-profile" onclick="openModal()">
+    <div class="profile-avatar">+</div>
+    <div class="profile-name" style="color:var(--purple);">Add Learner</div>
+  </div>`;
   updateSheetsStatus();
 }
 
-function levelLabel(l) {
-  return {starter:'Pre A1 Starters',mover:'A1 Movers',flyer:'A2 Flyers',ket:'A2 Key'}[l] || l;
-}
-
-function loadProfile(i) {
-  currentProfile = i;
-  const p = profiles[i];
-  currentLevel = p.level;
-  document.getElementById('homeAvatar').textContent = p.avatar;
-  document.getElementById('homeName').textContent = p.name;
-  document.getElementById('homeLevelBadge').textContent = levelLabel(p.level);
-  document.getElementById('homeStreak').textContent = (p.streak||0) + '🔥';
-  document.getElementById('homePoints').textContent = p.points || 0;
-  document.getElementById('homeStars').textContent = '★' + (p.stars || 0);
-  document.getElementById('homeCompleted').textContent = p.completed || 0;
-  document.querySelectorAll('.level-tab').forEach(t => {
-    t.classList.toggle('active', t.dataset.level === p.level || t.classList.contains(p.level));
-  });
-  // set correct active tab
-  document.querySelectorAll('.level-tab').forEach(t => t.classList.remove('active'));
-  document.querySelector(`.level-tab.${p.level}`)?.classList.add('active');
+function loadProfile(i){
+  currentProfile=i;
+  const p=profiles[i];
+  currentLevel=p.level;
+  document.getElementById('homeAvatar').textContent=p.avatar;
+  document.getElementById('homeName').textContent=p.name;
+  document.getElementById('homeLevelBadge').textContent=levelLabel(p.level);
+  document.getElementById('homeStreak').textContent=(p.streak||0)+'🔥';
+  document.getElementById('homePoints').textContent=p.points||0;
+  document.getElementById('homeStars').textContent='★'+(p.stars||0);
+  document.getElementById('homeCompleted').textContent=p.completed||0;
+  document.querySelectorAll('.level-tab').forEach(t=>t.classList.remove('active'));
+  const activeTab=document.querySelector(`.level-tab[data-level="${p.level}"]`);
+  if(activeTab)activeTab.classList.add('active');
+  updateModulePills();
   goTo('screen-home');
 }
 
-function selectLevel(el, level) {
-  document.querySelectorAll('.level-tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  currentLevel = level;
+function updateModulePills(){
+  const v=QB.vocab[currentLevel]||[];
+  const r=QB.reading[currentLevel]||[];
+  const g=QB.grammar[currentLevel]||[];
+  const s=QB.spelling[currentLevel]||[];
+  const j=QB.jumble[currentLevel]||[];
+  document.getElementById('vocabPill').textContent=v.length+' words';
+  document.getElementById('readingPill').textContent=r.length+' passages';
+  document.getElementById('grammarPill').textContent=g.length+' questions';
+  document.getElementById('spellingPill').textContent=s.length+' words';
+  document.getElementById('jumblePill').textContent=j.length+' sentences';
 }
 
-// ── MODAL ──────────────────────────────────────────
-function openModal() { document.getElementById('addProfileModal').classList.add('show'); }
-function closeModal() { document.getElementById('addProfileModal').classList.remove('show'); }
-function selectAvatar(el) {
-  document.querySelectorAll('.avatar-opt').forEach(a => a.classList.remove('selected'));
-  el.classList.add('selected');
+function selectLevel(el,level){
+  document.querySelectorAll('.level-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  currentLevel=level;
+  if(currentProfile!==null){profiles[currentProfile].level=level;localStorage.setItem('ww_profiles',JSON.stringify(profiles));}
+  document.getElementById('homeLevelBadge').textContent=levelLabel(level);
+  updateModulePills();
 }
-function selectLevelOpt(el) {
-  document.querySelectorAll('.level-opt').forEach(a => a.classList.remove('selected'));
-  el.classList.add('selected');
-}
-function saveProfile() {
-  const name = document.getElementById('newProfileName').value.trim();
-  if (!name) { showToast('Please enter a name!'); return; }
-  const avatar = document.querySelector('.avatar-opt.selected')?.dataset.emoji || '🐻';
-  const level = document.querySelector('.level-opt.selected')?.dataset.level || 'starter';
-  profiles.push({ name, avatar, level, points:0, stars:0, streak:0, completed:0, history:{} });
-  localStorage.setItem('ww_profiles', JSON.stringify(profiles));
+
+// ── MODAL ─────────────────────────────────────────
+function openModal(){document.getElementById('addProfileModal').classList.add('show');}
+function closeModal(){document.getElementById('addProfileModal').classList.remove('show');}
+function selectAvatar(el){document.querySelectorAll('.avatar-opt').forEach(a=>a.classList.remove('selected'));el.classList.add('selected');}
+function selectLevelOpt(el){document.querySelectorAll('.level-opt').forEach(a=>a.classList.remove('selected'));el.classList.add('selected');}
+function saveProfile(){
+  const name=document.getElementById('newProfileName').value.trim();
+  if(!name){showToast('Please enter a name!');return;}
+  const avatar=document.querySelector('.avatar-opt.selected')?.dataset.emoji||'🐻';
+  const level=document.querySelector('.level-opt.selected')?.dataset.level||'class4';
+  profiles.push({name,avatar,level,points:0,stars:0,streak:0,completed:0,history:{}});
+  localStorage.setItem('ww_profiles',JSON.stringify(profiles));
   closeModal();
-  document.getElementById('newProfileName').value = '';
+  document.getElementById('newProfileName').value='';
   renderProfiles();
   showToast('Learner added! 🎉');
 }
 
-// ── SETTINGS ──────────────────────────────────────
-function updateSheetsStatus() {
-  const url = localStorage.getItem('ww_sheets_url');
-  document.getElementById('sheetsStatus').textContent = url ? '✅ Connected' : 'Not connected';
+// ── SETTINGS ─────────────────────────────────────
+function updateSheetsStatus(){
+  const url=localStorage.getItem('ww_sheets_url');
+  document.getElementById('sheetsStatus').textContent=url?'✅ Google Sheets connected':'Google Sheets not connected';
 }
-function saveSettings() {
-  const url = document.getElementById('sheetsUrl').value.trim();
-  const key = document.getElementById('apiKey').value.trim();
-  if (url) localStorage.setItem('ww_sheets_url', url);
-  if (key) localStorage.setItem('ww_api_key', key);
-  const btn = document.getElementById('saveSettingsBtn');
-  btn.textContent = '✅ Saved!';
-  btn.classList.add('saved');
-  setTimeout(() => { btn.textContent = 'Save Settings'; btn.classList.remove('saved'); }, 2000);
-  updateSheetsStatus();
-  showToast('Settings saved!');
+function saveSettings(){
+  const url=document.getElementById('sheetsUrl').value.trim();
+  const key=document.getElementById('apiKey').value.trim();
+  if(url)localStorage.setItem('ww_sheets_url',url);
+  if(key&&!key.startsWith('•'))localStorage.setItem('ww_api_key',key);
+  const btn=document.getElementById('saveSettingsBtn');
+  btn.textContent='✅ Saved!';btn.classList.add('saved');
+  setTimeout(()=>{btn.textContent='Save Settings';btn.classList.remove('saved');},2000);
+  updateSheetsStatus();showToast('Settings saved!');
 }
-function loadSettingsForm() {
-  const url = localStorage.getItem('ww_sheets_url') || '';
-  const key = localStorage.getItem('ww_api_key') || '';
-  document.getElementById('sheetsUrl').value = url;
-  if (key) document.getElementById('apiKey').value = '••••••••';
+function loadSettingsForm(){
+  const url=localStorage.getItem('ww_sheets_url')||'';
+  const key=localStorage.getItem('ww_api_key')||'';
+  document.getElementById('sheetsUrl').value=url;
+  if(key)document.getElementById('apiKey').value='••••••••';
 }
 
-// ── LESSON ENGINE ──────────────────────────────────
-async function startLesson(type) {
-  if (['listening','writing','speaking'].includes(type)) {
-    showToast('Coming soon! Try Vocab, Reading or Grammar 📚');
-    return;
-  }
-  currentLessonType = type;
-  currentQIndex = 0;
-  sessionScore = 0;
-  sessionCorrect = 0;
-  currentQuestions = [];
-
-  const icons = { vocab:'📚', reading:'📖', grammar:'🔤' };
-  document.getElementById('lessonTitle').textContent =
-    {vocab:'Vocabulary',reading:'Reading',grammar:'Grammar'}[type];
-  document.getElementById('lessonSub').textContent = 'Preparing your lesson…';
-  document.getElementById('lessonProgress').style.width = '0%';
-  document.getElementById('lessonBody').innerHTML = `
-    <div class="loading-card">
-      <div class="spinner"></div>
-      <div class="loading-text">🤖 AI is creating your questions…</div>
+// ── QUESTION BANK SCREEN ─────────────────────────
+function renderQBank(){
+  const levels=['class4','class5','class6'];
+  let html='';
+  levels.forEach(lv=>{
+    const v=(QB.vocab[lv]||[]).length;
+    const r=(QB.reading[lv]||[]).length;
+    const g=(QB.grammar[lv]||[]).length;
+    const s=(QB.spelling[lv]||[]).length;
+    const j=(QB.jumble[lv]||[]).length;
+    const total=v+r+g+s+j;
+    html+=`<div class="qbank-card">
+      <div class="qbank-header"><div class="qbank-title">${levelLabel(lv)}</div><div class="qbank-count">${total} questions</div></div>
+      <div class="qbank-sub">📚 Vocab: ${v} &nbsp;|&nbsp; 📖 Reading: ${r} passages &nbsp;|&nbsp; 🔤 Grammar: ${g}</div>
+      <div class="qbank-sub" style="margin-top:4px;">🔡 Spelling: ${s} &nbsp;|&nbsp; 🧩 Jumble: ${j} sentences</div>
     </div>`;
+  });
+  document.getElementById('qbankContent').innerHTML=html;
+}
+
+// ── LESSON ENGINE ────────────────────────────────
+async function startLesson(type){
+  if(type==='writing'){showToast('Writing module coming soon! ✏️');return;}
+  currentLessonType=type;
+  currentQIndex=0;sessionScore=0;sessionCorrect=0;currentQuestions=[];
+  const titles={vocab:'Vocabulary',reading:'Reading',grammar:'Grammar',spelling:'Spelling',jumble:'Word Jumble'};
+  document.getElementById('lessonTitle').textContent=titles[type];
+  document.getElementById('lessonSub').textContent='Loading your questions…';
+  document.getElementById('lessonProgress').style.width='0%';
+  document.getElementById('lessonBody').innerHTML='<div class="loading-card"><div class="spinner"></div><div class="loading-text">Preparing your questions…</div></div>';
   goTo('screen-lesson');
 
-  const apiKey = localStorage.getItem('ww_api_key');
-  const sheetContent = await fetchSheetContent(type);
+  const apiKey=localStorage.getItem('ww_api_key');
+  const bank=QB[type]?.[currentLevel]||[];
 
-  if (apiKey) {
-    await generateWithAI(type, sheetContent, apiKey);
+  if(apiKey&&bank.length>0){
+    await tryAIGeneration(type,bank,apiKey);
   } else {
-    generateFallback(type, sheetContent);
+    buildFromBank(type,bank);
   }
 }
 
-async function fetchSheetContent(type) {
-  const url = localStorage.getItem('ww_sheets_url');
-  if (!url) return null;
-  try {
-    const res = await fetch(url);
-    const text = await res.text();
-    const rows = text.trim().split('\n').map(r => r.split(',').map(c => c.replace(/"/g,'')));
-    const headers = rows[0].map(h => h.toLowerCase().trim());
-    const levelIdx = headers.indexOf('level');
-    const typeIdx = headers.indexOf('type');
-    const contentIdx = headers.indexOf('content');
-    return rows.slice(1)
-      .filter(r => r[levelIdx]?.toLowerCase() === currentLevel && r[typeIdx]?.toLowerCase() === type)
-      .map(r => r[contentIdx]);
-  } catch(e) { return null; }
-}
-
-async function generateWithAI(type, sheetContent, apiKey) {
-  const level = levelLabel(currentLevel);
-  let prompt = '';
-
-  if (type === 'vocab') {
-    const words = sheetContent?.length
-      ? sheetContent.slice(0,8).join(', ')
-      : builtIn.vocab[currentLevel].map(w=>w.word).join(', ');
-    prompt = `You are a Cambridge English teacher creating a vocabulary quiz for ${level} level children.
-Words to use: ${words}
-Generate 5 multiple-choice questions. For each word, give 4 answer options (one correct meaning, three plausible wrong ones).
-Respond ONLY in JSON with this exact structure:
-{"questions":[{"word":"...","phonetic":"...","emoji":"...","options":["...","...","...","..."],"answer":0,"explanation":"..."}]}
-The "answer" field is the 0-based index of the correct option. Keep language simple for children aged 6-12.`;
-  } else if (type === 'reading') {
-    const passages = sheetContent?.length
-      ? sheetContent
-      : builtIn.reading[currentLevel].map(p => `${p.title}: ${p.passage}`);
-    const pick = passages[Math.floor(Math.random()*passages.length)];
-    prompt = `You are a Cambridge English teacher. Create a reading comprehension exercise for ${level} level children.
-Passage: ${pick}
-Generate 1 reading passage with 4 multiple-choice comprehension questions.
-Respond ONLY in JSON:
-{"passage":{"title":"...","text":"..."},"questions":[{"question":"...","options":["...","...","...","..."],"answer":0,"explanation":"..."}]}
-Keep language simple for children aged 6-12.`;
-  } else if (type === 'grammar') {
-    const topics = sheetContent?.length
-      ? sheetContent
-      : builtIn.grammar[currentLevel].map(g => g.topic);
-    const picked = topics.slice(0, 4);
-    prompt = `You are a Cambridge English teacher creating grammar exercises for ${level} level children.
-Topics: ${picked.join(', ')}
-Generate 5 multiple-choice grammar questions, one per topic if possible.
-Respond ONLY in JSON:
-{"questions":[{"question":"...","options":["...","...","...","..."],"answer":0,"explanation":"..."}]}
-Keep language simple for children aged 6-12.`;
+async function tryAIGeneration(type,bank,apiKey){
+  const levelName=levelLabel(currentLevel);
+  let prompt='';
+  if(type==='vocab'){
+    const sample=bank.sort(()=>Math.random()-0.5).slice(0,6).map(w=>w.word).join(', ');
+    prompt=`You are a Cambridge English teacher for ${levelName} students (age 9-11). 
+Words: ${sample}
+Generate 5 fresh multiple-choice vocabulary questions. Each question tests understanding of one word through context or meaning.
+Return ONLY valid JSON: {"questions":[{"word":"...","phonetic":"...","context":"Use it in a sentence here.","options":["...","...","...","..."],"answer":0,"explanation":"..."}]}
+answer is 0-based index of correct option. Keep language age-appropriate.`;
+  } else if(type==='grammar'){
+    const sample=bank.sort(()=>Math.random()-0.5).slice(0,5).map(g=>g.q).join(' | ');
+    prompt=`You are a Cambridge English teacher for ${levelName} students (age 9-11).
+Sample grammar topics: ${sample}
+Generate 5 fresh multiple-choice grammar questions appropriate for this level.
+Return ONLY valid JSON: {"questions":[{"q":"...","options":["...","...","...","..."],"answer":0,"explanation":"..."}]}`;
+  } else if(type==='reading'){
+    const passage=bank[Math.floor(Math.random()*bank.length)];
+    prompt=`You are a Cambridge English teacher for ${levelName} students (age 9-11).
+Passage title: "${passage.title}"
+Passage: "${passage.passage}"
+Generate 4 fresh comprehension questions different from the originals.
+Return ONLY valid JSON: {"passage":{"title":"${passage.title}","text":"${passage.passage}"},"questions":[{"q":"...","options":["...","...","...","..."],"answer":0,"explanation":"..."}]}`;
   }
 
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:1500,
-        messages:[{role:'user',content:prompt}]
-      })
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1500,messages:[{role:'user',content:prompt}]})
     });
-    const data = await res.json();
-    const text = data.content?.map(b => b.text||'').join('');
-    const clean = text.replace(/```json|```/g,'').trim();
-    const parsed = JSON.parse(clean);
-
-    if (type === 'vocab') {
-      currentQuestions = parsed.questions.map(q => ({type:'vocab', ...q}));
-    } else if (type === 'reading') {
-      currentQuestions = parsed.questions.map(q => ({
-        type:'reading', passage: parsed.passage, ...q
-      }));
-    } else {
-      currentQuestions = parsed.questions.map(q => ({type:'grammar', ...q}));
-    }
+    const data=await res.json();
+    const text=data.content?.map(b=>b.text||'').join('');
+    const clean=text.replace(/```json|```/g,'').trim();
+    const parsed=JSON.parse(clean);
+    if(type==='vocab')currentQuestions=parsed.questions.map(q=>({type:'vocab',...q}));
+    else if(type==='reading')currentQuestions=parsed.questions.map(q=>({type:'reading',passage:parsed.passage,q:q.q,...q}));
+    else currentQuestions=parsed.questions.map(q=>({type:'grammar',...q}));
     renderQuestion();
-  } catch(e) {
-    generateFallback(type, sheetContent);
-  }
+  }catch(e){buildFromBank(type,bank);}
 }
 
-function generateFallback(type, sheetContent) {
-  if (type === 'vocab') {
-    const words = builtIn.vocab[currentLevel];
-    const shuffled = words.sort(()=>Math.random()-0.5).slice(0,5);
-    currentQuestions = shuffled.map(w => {
-      const others = words.filter(x=>x.word!==w.word).sort(()=>Math.random()-0.5).slice(0,3);
-      const opts = [w.hint, ...others.map(o=>o.hint)].sort(()=>Math.random()-0.5);
-      return { type:'vocab', word:w.word, phonetic:'', emoji:'📖',
-        options:opts, answer:opts.indexOf(w.hint), explanation:`"${w.word}" means: ${w.hint}` };
-    });
-  } else if (type === 'reading') {
-    const passages = builtIn.reading[currentLevel];
-    const p = passages[Math.floor(Math.random()*passages.length)];
-    currentQuestions = p.questions.map(q => ({
-      type:'reading', passage:{title:p.title,text:p.passage},
-      question:q,
-      options:['Yes, that is correct','No, that is wrong','Maybe, possibly','It does not say'],
-      answer:0, explanation:'Read the passage carefully to find the answer!'
-    }));
-  } else {
-    const topics = builtIn.grammar[currentLevel];
-    currentQuestions = topics.slice(0,5).map(t => ({
-      type:'grammar', question:`Complete this sentence about ${t.topic}:\n${t.example}`,
-      options:['Option A','Option B','Option C','Option D'],
-      answer:0, explanation:`This tests your knowledge of ${t.topic}.`
-    }));
+function buildFromBank(type,bank){
+  if(!bank||bank.length===0){
+    document.getElementById('lessonBody').innerHTML='<div class="loading-card"><div class="loading-text">No questions available for this level yet.<br><br>Switch to Class 4 to start! 📚</div></div>';
+    return;
   }
-
-  if (!localStorage.getItem('ww_api_key')) {
-    showToast('Tip: Add your API key in Settings for AI questions!');
+  const shuffled=[...bank].sort(()=>Math.random()-0.5);
+  if(type==='vocab'){
+    currentQuestions=shuffled.slice(0,8).map(w=>({type:'vocab',...w}));
+  } else if(type==='reading'){
+    const p=shuffled[0];
+    currentQuestions=p.questions.map(q=>({type:'reading',passage:{title:p.title,text:p.passage},...q}));
+  } else if(type==='grammar'){
+    currentQuestions=shuffled.slice(0,8).map(g=>({type:'grammar',...g}));
+  } else if(type==='spelling'){
+    currentQuestions=shuffled.slice(0,8).map(s=>({type:'spelling',...s}));
+  } else if(type==='jumble'){
+    currentQuestions=shuffled.slice(0,6).map(j=>({type:'jumble',...j}));
   }
   renderQuestion();
 }
 
-// ── RENDER QUESTION ────────────────────────────────
-function renderQuestion() {
-  if (currentQIndex >= currentQuestions.length) { showComplete(); return; }
-  const q = currentQuestions[currentQIndex];
-  const total = currentQuestions.length;
-  document.getElementById('lessonSub').textContent = `Question ${currentQIndex+1} of ${total}`;
-  document.getElementById('lessonProgress').style.width = ((currentQIndex/total)*100)+'%';
+// ── RENDER ────────────────────────────────────────
+function renderQuestion(){
+  if(currentQIndex>=currentQuestions.length){showComplete();return;}
+  const q=currentQuestions[currentQIndex];
+  const total=currentQuestions.length;
+  document.getElementById('lessonSub').textContent=`Question ${currentQIndex+1} of ${total}`;
+  document.getElementById('lessonProgress').style.width=((currentQIndex/total)*100)+'%';
 
-  let cardHtml = '';
-  if (q.type === 'vocab') {
-    cardHtml = `<div class="q-card">
-      <span class="q-word">${q.emoji || '📖'} ${q.word}</span>
-      ${q.phonetic ? `<span class="q-phonetic">${q.phonetic}</span>` : ''}
+  let cardHtml='';
+  let optionsClass='options-grid';
+
+  if(q.type==='vocab'){
+    cardHtml=`<div class="q-card">
+      <span class="q-word">${q.word}</span>
+      ${q.phonetic?`<span class="q-phonetic">${q.phonetic}</span>`:''}
+      ${q.context?`<span class="q-context">"${q.context}"</span>`:''}
     </div>
     <p style="font-size:13px;font-weight:700;color:var(--muted);text-align:center;margin-bottom:12px;">What does this word mean?</p>`;
-  } else if (q.type === 'reading') {
-    cardHtml = `<div class="q-card">
-      <p style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px;">${q.passage.title}</p>
+  } else if(q.type==='reading'){
+    cardHtml=`<div class="q-card">
+      <div class="q-passage-title">${q.passage.title}</div>
       <p class="q-passage">${q.passage.text}</p>
-      <p class="q-question">❓ ${q.question}</p>
+      <p class="q-question">❓ ${q.q||q.question}</p>
     </div>`;
-  } else {
-    const qText = (q.question||'').replace(/\n/g,'<br>');
-    cardHtml = `<div class="q-card"><p class="q-prompt">${qText}</p></div>`;
+    optionsClass='options-grid one-col';
+  } else if(q.type==='grammar'){
+    const qtext=(q.q||'').replace(/\n/g,'<br>');
+    cardHtml=`<div class="q-card"><p class="q-prompt">${qtext}</p></div>`;
+  } else if(q.type==='spelling'){
+    cardHtml=`<div class="q-card">
+      <div style="text-align:center;margin-bottom:8px;font-size:13px;font-weight:700;color:var(--muted);">Find the correct spelling:</div>
+      <div style="text-align:center;font-size:16px;font-weight:700;color:var(--muted);">🔡</div>
+    </div>`;
+  } else if(q.type==='jumble'){
+    cardHtml=`<div class="q-card">
+      <div style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px;">Rearrange these words:</div>
+      <div style="background:var(--purple-light);border-radius:10px;padding:12px;font-size:14px;font-weight:700;color:var(--purple);line-height:1.8;">${q.scrambled}</div>
+    </div>
+    <p style="font-size:13px;font-weight:700;color:var(--muted);margin-bottom:12px;">Which is the correct sentence?</p>`;
+    optionsClass='options-grid one-col';
   }
 
-  const optHtml = q.options.map((o,i) =>
-    `<button class="option-btn" onclick="checkAnswer(${i})">${o}</button>`
-  ).join('');
+  const opts=(q.options||[]).map((o,i)=>`<button class="option-btn" onclick="checkAnswer(${i})">${o}</button>`).join('');
 
-  document.getElementById('lessonBody').innerHTML = `
+  document.getElementById('lessonBody').innerHTML=`
     ${cardHtml}
-    <div class="options-grid">${optHtml}</div>
+    <div class="${optionsClass}">${opts}</div>
     <div class="result-banner" id="resultBanner"></div>
     <button class="next-btn" id="nextBtn" onclick="nextQuestion()">
-      ${currentQIndex+1 < currentQuestions.length ? 'Next Question →' : 'Finish ✓'}
+      ${currentQIndex+1<currentQuestions.length?'Next Question →':'Finish ✓'}
     </button>`;
 }
 
-function checkAnswer(idx) {
-  const btns = document.querySelectorAll('.option-btn');
-  if (btns[0].disabled) return;
-  btns.forEach(b => b.disabled = true);
-  const q = currentQuestions[currentQIndex];
-  const banner = document.getElementById('resultBanner');
-  btns[q.answer].classList.add('correct');
-  if (idx === q.answer) {
-    sessionScore += 10; sessionCorrect++;
-    banner.textContent = '🎉 Brilliant! Correct! +10 points';
-    banner.className = 'result-banner show correct';
+function checkAnswer(idx){
+  const btns=document.querySelectorAll('.option-btn');
+  if(btns[0]?.disabled)return;
+  btns.forEach(b=>b.disabled=true);
+  const q=currentQuestions[currentQIndex];
+  const correct=q.answer;
+  const banner=document.getElementById('resultBanner');
+  btns[correct].classList.add('correct');
+  if(idx===correct){
+    sessionScore+=10;sessionCorrect++;
+    banner.textContent='🎉 Excellent! That\'s correct! +10 points';
+    banner.className='result-banner show correct';
   } else {
     btns[idx].classList.add('wrong');
-    banner.textContent = `💡 ${q.explanation || 'The highlighted answer is correct!'}`;
-    banner.className = 'result-banner show wrong';
+    const expl=q.explanation||q.tip||`The correct answer is option ${correct+1}.`;
+    banner.textContent=`💡 Not quite! ${expl}`;
+    banner.className='result-banner show wrong';
   }
   document.getElementById('nextBtn').classList.add('show');
 }
 
-function nextQuestion() { currentQIndex++; renderQuestion(); }
+function nextQuestion(){currentQIndex++;renderQuestion();}
 
-function showComplete() {
-  document.getElementById('lessonProgress').style.width = '100%';
-  document.getElementById('lessonSub').textContent = 'Completed! 🏆';
-
-  // Update profile
-  if (currentProfile !== null) {
-    const p = profiles[currentProfile];
-    p.points = (p.points||0) + sessionScore;
-    p.stars = (p.stars||0) + sessionCorrect;
-    p.completed = (p.completed||0) + 1;
-    p.history = p.history || {};
-    p.history[currentLessonType] = (p.history[currentLessonType]||0) + 1;
-    localStorage.setItem('ww_profiles', JSON.stringify(profiles));
-    document.getElementById('homePoints').textContent = p.points;
-    document.getElementById('homeStars').textContent = '★' + p.stars;
-    document.getElementById('homeCompleted').textContent = p.completed;
+function showComplete(){
+  document.getElementById('lessonProgress').style.width='100%';
+  document.getElementById('lessonSub').textContent='Completed! 🏆';
+  if(currentProfile!==null){
+    const p=profiles[currentProfile];
+    p.points=(p.points||0)+sessionScore;
+    p.stars=(p.stars||0)+sessionCorrect;
+    p.completed=(p.completed||0)+1;
+    localStorage.setItem('ww_profiles',JSON.stringify(profiles));
+    document.getElementById('homePoints').textContent=p.points;
+    document.getElementById('homeStars').textContent='★'+p.stars;
+    document.getElementById('homeCompleted').textContent=p.completed;
   }
-
-  document.getElementById('lessonBody').innerHTML = `
+  const pct=Math.round((sessionCorrect/currentQuestions.length)*100);
+  const medal=pct>=80?'🏆':pct>=60?'🥈':'🥉';
+  document.getElementById('lessonBody').innerHTML=`
     <div class="complete-card">
-      <span class="trophy">🏆</span>
-      <div class="complete-title">Well done!</div>
-      <div class="complete-sub">${sessionCorrect} out of ${currentQuestions.length} correct</div>
+      <span class="trophy">${medal}</span>
+      <div class="complete-title">${pct>=80?'Outstanding!':pct>=60?'Well done!':'Keep practising!'}</div>
+      <div class="complete-sub">${sessionCorrect} out of ${currentQuestions.length} correct (${pct}%)</div>
       <div class="complete-stats">
         <div class="cstat"><div class="cn">+${sessionScore}</div><div class="cl">Points</div></div>
         <div class="cstat"><div class="cn">★${sessionCorrect}</div><div class="cl">Stars</div></div>
       </div>
       <button class="next-btn show" onclick="startLesson(currentLessonType)">Try Again 🔄</button>
-      <button class="next-btn show" style="margin-top:8px;background:white;color:var(--purple);border:2px solid var(--purple);" onclick="goTo('screen-home')">Back to Menu 🏠</button>
+      <button class="next-btn show outline" style="margin-top:8px;" onclick="goTo('screen-home')">Back to Menu 🏠</button>
     </div>`;
 }
 
-// ── NAVIGATION ─────────────────────────────────────
-function goTo(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+// ── NAVIGATION ────────────────────────────────────
+function goTo(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
-  if (id === 'screen-settings') loadSettingsForm();
+  if(id==='screen-settings')loadSettingsForm();
+  if(id==='screen-qbank')renderQBank();
 }
 
-// ── TOAST ──────────────────────────────────────────
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2800);
+// ── TOAST ─────────────────────────────────────────
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
 }
 
-// ── INIT ───────────────────────────────────────────
+// ── INIT ──────────────────────────────────────────
 renderProfiles();
 </script>
 </body>
